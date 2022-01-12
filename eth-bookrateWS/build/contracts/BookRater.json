@@ -29,9 +29,9 @@
           "type": "string"
         },
         {
-          "internalType": "bool",
+          "internalType": "uint256",
           "name": "rating",
-          "type": "bool"
+          "type": "uint256"
         }
       ],
       "payable": false,
@@ -60,6 +60,11 @@
           "internalType": "string",
           "name": "_content",
           "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "rating",
+          "type": "uint256"
         }
       ],
       "name": "createTask",
@@ -69,21 +74,21 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_content\",\"type\":\"string\"}],\"name\":\"createTask\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"ratedBooks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"content\",\"type\":\"string\"},{\"internalType\":\"bool\",\"name\":\"rating\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"taskCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BookRater.sol\":\"BookRater\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/BookRater.sol\":{\"keccak256\":\"0x861127d61a59cf508a7028d79cb1fe1556e449a1f2f38d6cde3cb57d679117cd\",\"urls\":[\"bzz-raw://37810a44c697669441e79999d8d21dbf7e6887570488467305b639a375f13462\",\"dweb:/ipfs/QmWJexTP3HnDEHH8ND7KAygRyHA2Z6Ek76Wh5WeVQe3hmb\"]}},\"version\":1}",
-  "bytecode": "0x60806040526000805534801561001457600080fd5b50604080518082019091526004815263456d6d6160e01b6020820152610042906001600160e01b0361004716565b61014e565b6000805460019081018083556040805160608101825282815260208082018781528284018790529386528481529190942084518155915180519293610094939085019291909101906100b3565b50604091909101516002909101805460ff191691151591909117905550565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106100f457805160ff1916838001178555610121565b82800160010185558215610121579182015b82811115610121578251825591602001919060010190610106565b5061012d929150610131565b5090565b61014b91905b8082111561012d5760008155600101610137565b90565b6103a08061015d6000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063111002aa1461004657806349ebcd4c146100ee578063b6cb58a514610195575b600080fd5b6100ec6004803603602081101561005c57600080fd5b81019060208101813564010000000081111561007757600080fd5b82018360208201111561008957600080fd5b803590602001918460018302840111640100000000831117156100ab57600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295506101af945050505050565b005b61010b6004803603602081101561010457600080fd5b503561021b565b604051808481526020018060200183151515158152602001828103825284818151815260200191508051906020019080838360005b83811015610158578181015183820152602001610140565b50505050905090810190601f1680156101855780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b61019d6102ca565b60408051918252519081900360200190f35b60008054600190810180835560408051606081018252828152602080820187815282840187905293865284815291909420845181559151805192936101fc939085019291909101906102d0565b50604091909101516002909101805460ff191691151591909117905550565b600160208181526000928352604092839020805481840180548651600296821615610100026000190190911695909504601f810185900485028601850190965285855290949193929091908301828280156102b75780601f1061028c576101008083540402835291602001916102b7565b820191906000526020600020905b81548152906001019060200180831161029a57829003601f168201915b5050506002909301549192505060ff1683565b60005481565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061031157805160ff191683800117855561033e565b8280016001018555821561033e579182015b8281111561033e578251825591602001919060010190610323565b5061034a92915061034e565b5090565b61036891905b8082111561034a5760008155600101610354565b9056fea265627a7a7231582071ea30fb6698d26fc1c8627bef8413a584569a32e806682a79658c3d561ee71564736f6c63430005100032",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c8063111002aa1461004657806349ebcd4c146100ee578063b6cb58a514610195575b600080fd5b6100ec6004803603602081101561005c57600080fd5b81019060208101813564010000000081111561007757600080fd5b82018360208201111561008957600080fd5b803590602001918460018302840111640100000000831117156100ab57600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295506101af945050505050565b005b61010b6004803603602081101561010457600080fd5b503561021b565b604051808481526020018060200183151515158152602001828103825284818151815260200191508051906020019080838360005b83811015610158578181015183820152602001610140565b50505050905090810190601f1680156101855780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b61019d6102ca565b60408051918252519081900360200190f35b60008054600190810180835560408051606081018252828152602080820187815282840187905293865284815291909420845181559151805192936101fc939085019291909101906102d0565b50604091909101516002909101805460ff191691151591909117905550565b600160208181526000928352604092839020805481840180548651600296821615610100026000190190911695909504601f810185900485028601850190965285855290949193929091908301828280156102b75780601f1061028c576101008083540402835291602001916102b7565b820191906000526020600020905b81548152906001019060200180831161029a57829003601f168201915b5050506002909301549192505060ff1683565b60005481565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061031157805160ff191683800117855561033e565b8280016001018555821561033e579182015b8281111561033e578251825591602001919060010190610323565b5061034a92915061034e565b5090565b61036891905b8082111561034a5760008155600101610354565b9056fea265627a7a7231582071ea30fb6698d26fc1c8627bef8413a584569a32e806682a79658c3d561ee71564736f6c63430005100032",
-  "sourceMap": "29:431:0:-;;;82:1;55:28;;398:59;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;429:18:0;;;;;;;;;;;;-1:-1:-1;;;429:18:0;;;;;;-1:-1:-1;;;;;429:10:0;:18;:::i;:::-;29:431;;241:149;303:9;:11;;;;;;;;;349:33;;;;;;;;;;;;;;;;;;;;;;;;325:21;;;;;;;;;;:57;;;;;;;;:21;;:57;;;;;;;;;;;;:::i;:::-;-1:-1:-1;325:57:0;;;;;;;;;;;;-1:-1:-1;;325:57:0;;;;;;;;;;-1:-1:-1;241:149:0:o;29:431::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;29:431:0;;;-1:-1:-1;29:431:0;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
-  "deployedSourceMap": "29:431:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;29:431:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;241:149;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;241:149:0;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;241:149:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;241:149:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;241:149:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;241:149:0;;-1:-1:-1;241:149:0;;-1:-1:-1;;;;;241:149:0:i;:::-;;189:43;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;189:43:0;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;189:43:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;55:28;;;:::i;:::-;;;;;;;;;;;;;;;;241:149;303:9;:11;;;;;;;;;349:33;;;;;;;;;;;;;;;;;;;;;;;;325:21;;;;;;;;;;:57;;;;;;;;:21;;:57;;;;;;;;;;;;:::i;:::-;-1:-1:-1;325:57:0;;;;;;;;;;;;-1:-1:-1;;325:57:0;;;;;;;;;;-1:-1:-1;241:149:0:o;189:43::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;189:43:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;189:43:0;;;;;;;-1:-1:-1;;189:43:0;;;:::o;55:28::-;;;;:::o;29:431::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;29:431:0;;;-1:-1:-1;29:431:0;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity >=0.5.16;\r\n\r\ncontract BookRater {\r\n    uint256 public taskCount = 0;\r\n\r\n    struct Rater {\r\n        uint256 id;\r\n        string content;\r\n        bool rating;\r\n    }\r\n\r\n    mapping(uint256 => Rater) public ratedBooks;\r\n\r\n    function createTask(string memory _content) public {\r\n        taskCount++;\r\n        ratedBooks[taskCount] = Rater(taskCount, _content, false);\r\n    }\r\n\r\n    constructor() public{\r\n        createTask(\"Emma\");\r\n      }\r\n}\r\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_content\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rating\",\"type\":\"uint256\"}],\"name\":\"createTask\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"ratedBooks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"content\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rating\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"taskCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BookRater.sol\":\"BookRater\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/BookRater.sol\":{\"keccak256\":\"0x71545b4772fc4b17a3e7297eac85c61450a3e7d92cfedd2ab42450a8b7f03717\",\"urls\":[\"bzz-raw://ad17b51cf9351b042bf3e528a1216888a1813247546d6197da6d94310ef7e3e9\",\"dweb:/ipfs/QmWfrFYw7yxFyQfvmE8UySHAL4svZuLVKJYyo3YqHwUySP\"]}},\"version\":1}",
+  "bytecode": "0x60806040526000805534801561001457600080fd5b5061004160405180606001604052806021815260200161051a6021913960086001600160e01b0361008316565b6040805180820190915260128152712a3432902b30b734b9b434b733902430b63360711b602082015261007e9060096001600160e01b0361008316565b61017d565b60008054600190810180835560408051606081018252828152602080820188815282840188905293865284815291909420845181559151805192936100d0939085019291909101906100e2565b50604082015181600201559050505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061012357805160ff1916838001178555610150565b82800160010185558215610150579182015b82811115610150578251825591602001919060010190610135565b5061015c929150610160565b5090565b61017a91905b8082111561015c5760008155600101610166565b90565b61038e8061018c6000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c806304fe2b341461004657806349ebcd4c146100f0578063b6cb58a514610193575b600080fd5b6100ee6004803603604081101561005c57600080fd5b81019060208101813564010000000081111561007757600080fd5b82018360208201111561008957600080fd5b803590602001918460018302840111640100000000831117156100ab57600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955050913592506101ad915050565b005b61010d6004803603602081101561010657600080fd5b503561020c565b6040518084815260200180602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561015657818101518382015260200161013e565b50505050905090810190601f1680156101835780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b61019b6102b8565b60408051918252519081900360200190f35b60008054600190810180835560408051606081018252828152602080820188815282840188905293865284815291909420845181559151805192936101fa939085019291909101906102be565b50604082015181600201559050505050565b600160208181526000928352604092839020805481840180548651600296821615610100026000190190911695909504601f810185900485028601850190965285855290949193929091908301828280156102a85780601f1061027d576101008083540402835291602001916102a8565b820191906000526020600020905b81548152906001019060200180831161028b57829003601f168201915b5050505050908060020154905083565b60005481565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106102ff57805160ff191683800117855561032c565b8280016001018555821561032c579182015b8281111561032c578251825591602001919060010190610311565b5061033892915061033c565b5090565b61035691905b808211156103385760008155600101610342565b9056fea265627a7a72315820e4ebbf20c0f7afc7d158b4c3dcdaf27a2a1d32da10146f1f4a7fa2e0711054f864736f6c6343000510003254686520536576656e2048757362616e6473206f66204576656c796e204875676f",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c806304fe2b341461004657806349ebcd4c146100f0578063b6cb58a514610193575b600080fd5b6100ee6004803603604081101561005c57600080fd5b81019060208101813564010000000081111561007757600080fd5b82018360208201111561008957600080fd5b803590602001918460018302840111640100000000831117156100ab57600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955050913592506101ad915050565b005b61010d6004803603602081101561010657600080fd5b503561020c565b6040518084815260200180602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561015657818101518382015260200161013e565b50505050905090810190601f1680156101835780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b61019b6102b8565b60408051918252519081900360200190f35b60008054600190810180835560408051606081018252828152602080820188815282840188905293865284815291909420845181559151805192936101fa939085019291909101906102be565b50604082015181600201559050505050565b600160208181526000928352604092839020805481840180548651600296821615610100026000190190911695909504601f810185900485028601850190965285855290949193929091908301828280156102a85780601f1061027d576101008083540402835291602001916102a8565b820191906000526020600020905b81548152906001019060200180831161028b57829003601f168201915b5050505050908060020154905083565b60005481565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106102ff57805160ff191683800117855561032c565b8280016001018555821561032c579182015b8281111561032c578251825591602001919060010190610311565b5061033892915061033c565b5090565b61035691905b808211156103385760008155600101610342565b9056fea265627a7a72315820e4ebbf20c0f7afc7d158b4c3dcdaf27a2a1d32da10146f1f4a7fa2e0711054f864736f6c63430005100032",
+  "sourceMap": "29:524:0:-;;;82:1;55:28;;415:135;8:9:-1;5:2;;;30:1;27;20:12;5:2;415:135:0;446:49;;;;;;;;;;;;;;;;;;493:1;-1:-1:-1;;;;;446:10:0;:49;:::i;:::-;506:34;;;;;;;;;;;;-1:-1:-1;;;506:34:0;;;;;;538:1;-1:-1:-1;;;;;506:10:0;:34;:::i;:::-;29:524;;244:163;319:9;:11;;;;;;;;;365:34;;;;;;;;;;;;;;;;;;;;;;;;341:21;;;;;;;;;;:58;;;;;;;;:21;;:58;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;244:163;;:::o;29:524::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;29:524:0;;;-1:-1:-1;29:524:0;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "29:524:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;29:524:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;244:163;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;244:163:0;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;244:163:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;244:163:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;244:163:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;244:163:0;;-1:-1:-1;;244:163:0;;;-1:-1:-1;244:163:0;;-1:-1:-1;;244:163:0:i;:::-;;192:43;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;192:43:0;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;192:43:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;55:28;;;:::i;:::-;;;;;;;;;;;;;;;;244:163;319:9;:11;;;;;;;;;365:34;;;;;;;;;;;;;;;;;;;;;;;;341:21;;;;;;;;;;:58;;;;;;;;:21;;:58;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;244:163;;:::o;192:43::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;192:43:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;55:28::-;;;;:::o;29:524::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;29:524:0;;;-1:-1:-1;29:524:0;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity >=0.5.16;\r\n\r\ncontract BookRater {\r\n    uint256 public taskCount = 0;\r\n\r\n    struct Rater {\r\n        uint256 id;\r\n        string content;\r\n        uint256 rating;\r\n    }\r\n\r\n    mapping(uint256 => Rater) public ratedBooks;\r\n\r\n    function createTask(string memory _content, uint rating) public {\r\n        taskCount++;\r\n        ratedBooks[taskCount] = Rater(taskCount, _content, rating);\r\n    }\r\n\r\n    constructor() public{\r\n        createTask(\"The Seven Husbands of Evelyn Hugo\",8);\r\n        createTask(\"The Vanishing Half\",9);\r\n      }\r\n}\r\n",
   "sourcePath": "D:\\DApp\\Dapp-demo\\eth-bookrateWS\\contracts\\BookRater.sol",
   "ast": {
     "absolutePath": "project:/contracts/BookRater.sol",
     "exportedSymbols": {
       "BookRater": [
-        43
+        51
       ]
     },
-    "id": 44,
+    "id": 52,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -103,9 +108,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 43,
+        "id": 51,
         "linearizedBaseContracts": [
-          43
+          51
         ],
         "name": "BookRater",
         "nodeType": "ContractDefinition",
@@ -115,7 +120,7 @@
             "id": 4,
             "name": "taskCount",
             "nodeType": "VariableDeclaration",
-            "scope": 43,
+            "scope": 51,
             "src": "55:28:0",
             "stateVariable": true,
             "storageLocation": "default",
@@ -215,21 +220,21 @@
                 "name": "rating",
                 "nodeType": "VariableDeclaration",
                 "scope": 11,
-                "src": "162:11:0",
+                "src": "162:14:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_bool",
-                  "typeString": "bool"
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
                 },
                 "typeName": {
                   "id": 9,
-                  "name": "bool",
+                  "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "162:4:0",
+                  "src": "162:7:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_bool",
-                    "typeString": "bool"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   }
                 },
                 "value": null,
@@ -238,8 +243,8 @@
             ],
             "name": "Rater",
             "nodeType": "StructDefinition",
-            "scope": 43,
-            "src": "92:89:0",
+            "scope": 51,
+            "src": "92:92:0",
             "visibility": "public"
           },
           {
@@ -247,8 +252,8 @@
             "id": 15,
             "name": "ratedBooks",
             "nodeType": "VariableDeclaration",
-            "scope": 43,
-            "src": "189:43:0",
+            "scope": 51,
+            "src": "192:43:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -261,14 +266,14 @@
                 "id": 12,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "197:7:0",
+                "src": "200:7:0",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "189:25:0",
+              "src": "192:25:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Rater_$11_storage_$",
                 "typeString": "mapping(uint256 => struct BookRater.Rater)"
@@ -279,7 +284,7 @@
                 "name": "Rater",
                 "nodeType": "UserDefinedTypeName",
                 "referencedDeclaration": 11,
-                "src": "208:5:0",
+                "src": "211:5:0",
                 "typeDescriptions": {
                   "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
                   "typeString": "struct BookRater.Rater"
@@ -291,14 +296,14 @@
           },
           {
             "body": {
-              "id": 33,
+              "id": 35,
               "nodeType": "Block",
-              "src": "292:98:0",
+              "src": "308:99:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 21,
+                    "id": 23,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -306,15 +311,15 @@
                     "nodeType": "UnaryOperation",
                     "operator": "++",
                     "prefix": false,
-                    "src": "303:11:0",
+                    "src": "319:11:0",
                     "subExpression": {
                       "argumentTypes": null,
-                      "id": 20,
+                      "id": 22,
                       "name": "taskCount",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 4,
-                      "src": "303:9:0",
+                      "src": "319:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -325,14 +330,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 22,
+                  "id": 24,
                   "nodeType": "ExpressionStatement",
-                  "src": "303:11:0"
+                  "src": "319:11:0"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 31,
+                    "id": 33,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -341,26 +346,26 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 23,
+                        "id": 25,
                         "name": "ratedBooks",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 15,
-                        "src": "325:10:0",
+                        "src": "341:10:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Rater_$11_storage_$",
                           "typeString": "mapping(uint256 => struct BookRater.Rater storage ref)"
                         }
                       },
-                      "id": 25,
+                      "id": 27,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 24,
+                        "id": 26,
                         "name": "taskCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 4,
-                        "src": "336:9:0",
+                        "src": "352:9:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -371,7 +376,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "325:21:0",
+                      "src": "341:21:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Rater_$11_storage",
                         "typeString": "struct BookRater.Rater storage ref"
@@ -384,12 +389,12 @@
                       "arguments": [
                         {
                           "argumentTypes": null,
-                          "id": 27,
+                          "id": 29,
                           "name": "taskCount",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4,
-                          "src": "355:9:0",
+                          "src": "371:9:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -397,12 +402,12 @@
                         },
                         {
                           "argumentTypes": null,
-                          "id": 28,
+                          "id": 30,
                           "name": "_content",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 17,
-                          "src": "366:8:0",
+                          "src": "382:8:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
                             "typeString": "string memory"
@@ -410,21 +415,16 @@
                         },
                         {
                           "argumentTypes": null,
-                          "hexValue": "66616c7365",
-                          "id": 29,
-                          "isConstant": false,
-                          "isLValue": false,
-                          "isPure": true,
-                          "kind": "bool",
-                          "lValueRequested": false,
-                          "nodeType": "Literal",
-                          "src": "376:5:0",
-                          "subdenomination": null,
+                          "id": 31,
+                          "name": "rating",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 19,
+                          "src": "392:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_bool",
-                            "typeString": "bool"
-                          },
-                          "value": "false"
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
                         }
                       ],
                       "expression": {
@@ -438,22 +438,22 @@
                             "typeString": "string memory"
                           },
                           {
-                            "typeIdentifier": "t_bool",
-                            "typeString": "bool"
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
                           }
                         ],
-                        "id": 26,
+                        "id": 28,
                         "name": "Rater",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 11,
-                        "src": "349:5:0",
+                        "src": "365:5:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_type$_t_struct$_Rater_$11_storage_ptr_$",
                           "typeString": "type(struct BookRater.Rater storage pointer)"
                         }
                       },
-                      "id": 30,
+                      "id": 32,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -461,33 +461,33 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "349:33:0",
+                      "src": "365:34:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Rater_$11_memory",
                         "typeString": "struct BookRater.Rater memory"
                       }
                     },
-                    "src": "325:57:0",
+                    "src": "341:58:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_Rater_$11_storage",
                       "typeString": "struct BookRater.Rater storage ref"
                     }
                   },
-                  "id": 32,
+                  "id": 34,
                   "nodeType": "ExpressionStatement",
-                  "src": "325:57:0"
+                  "src": "341:58:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 34,
+            "id": 36,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "createTask",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 18,
+              "id": 20,
               "nodeType": "ParameterList",
               "parameters": [
                 {
@@ -495,8 +495,8 @@
                   "id": 17,
                   "name": "_content",
                   "nodeType": "VariableDeclaration",
-                  "scope": 34,
-                  "src": "261:22:0",
+                  "scope": 36,
+                  "src": "264:22:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -507,7 +507,7 @@
                     "id": 16,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "261:6:0",
+                    "src": "264:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -515,27 +515,53 @@
                   },
                   "value": null,
                   "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 19,
+                  "name": "rating",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 36,
+                  "src": "288:11:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 18,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "288:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
                 }
               ],
-              "src": "260:24:0"
+              "src": "263:37:0"
             },
             "returnParameters": {
-              "id": 19,
+              "id": 21,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "292:0:0"
+              "src": "308:0:0"
             },
-            "scope": 43,
-            "src": "241:149:0",
+            "scope": 51,
+            "src": "244:163:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 41,
+              "id": 49,
               "nodeType": "Block",
-              "src": "418:39:0",
+              "src": "435:115:0",
               "statements": [
                 {
                   "expression": {
@@ -543,42 +569,64 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "hexValue": "456d6d61",
-                        "id": 38,
+                        "hexValue": "54686520536576656e2048757362616e6473206f66204576656c796e204875676f",
+                        "id": 40,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "440:6:0",
+                        "src": "457:35:0",
                         "subdenomination": null,
                         "typeDescriptions": {
-                          "typeIdentifier": "t_stringliteral_7034af19a3a271767aec1560f66ec5701a4f6db725aefcc84e01c83860303071",
-                          "typeString": "literal_string \"Emma\""
+                          "typeIdentifier": "t_stringliteral_a8d70be257aef506ba2099a57e0a6fde34051e86304f72286613fafe9e721291",
+                          "typeString": "literal_string \"The Seven Husbands of Evelyn Hugo\""
                         },
-                        "value": "Emma"
+                        "value": "The Seven Husbands of Evelyn Hugo"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "38",
+                        "id": 41,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "493:1:0",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_8_by_1",
+                          "typeString": "int_const 8"
+                        },
+                        "value": "8"
                       }
                     ],
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_stringliteral_7034af19a3a271767aec1560f66ec5701a4f6db725aefcc84e01c83860303071",
-                          "typeString": "literal_string \"Emma\""
+                          "typeIdentifier": "t_stringliteral_a8d70be257aef506ba2099a57e0a6fde34051e86304f72286613fafe9e721291",
+                          "typeString": "literal_string \"The Seven Husbands of Evelyn Hugo\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_8_by_1",
+                          "typeString": "int_const 8"
                         }
                       ],
-                      "id": 37,
+                      "id": 39,
                       "name": "createTask",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 34,
-                      "src": "429:10:0",
+                      "referencedDeclaration": 36,
+                      "src": "446:10:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$returns$__$",
-                        "typeString": "function (string memory)"
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
                       }
                     },
-                    "id": 39,
+                    "id": 42,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -586,56 +634,137 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "429:18:0",
+                    "src": "446:49:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 40,
+                  "id": 43,
                   "nodeType": "ExpressionStatement",
-                  "src": "429:18:0"
+                  "src": "446:49:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "5468652056616e697368696e672048616c66",
+                        "id": 45,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "517:20:0",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_862656dccc682fa1e475e699e4169334ae481e9cd6bbf1685fec431a0cb0368c",
+                          "typeString": "literal_string \"The Vanishing Half\""
+                        },
+                        "value": "The Vanishing Half"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "39",
+                        "id": 46,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "538:1:0",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_9_by_1",
+                          "typeString": "int_const 9"
+                        },
+                        "value": "9"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_862656dccc682fa1e475e699e4169334ae481e9cd6bbf1685fec431a0cb0368c",
+                          "typeString": "literal_string \"The Vanishing Half\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_9_by_1",
+                          "typeString": "int_const 9"
+                        }
+                      ],
+                      "id": 44,
+                      "name": "createTask",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 36,
+                      "src": "506:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                        "typeString": "function (string memory,uint256)"
+                      }
+                    },
+                    "id": 47,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "506:34:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 48,
+                  "nodeType": "ExpressionStatement",
+                  "src": "506:34:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 42,
+            "id": 50,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 35,
+              "id": 37,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "409:2:0"
+              "src": "426:2:0"
             },
             "returnParameters": {
-              "id": 36,
+              "id": 38,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "418:0:0"
+              "src": "435:0:0"
             },
-            "scope": 43,
-            "src": "398:59:0",
+            "scope": 51,
+            "src": "415:135:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 44,
-        "src": "29:431:0"
+        "scope": 52,
+        "src": "29:524:0"
       }
     ],
-    "src": "0:462:0"
+    "src": "0:555:0"
   },
   "legacyAST": {
     "attributes": {
       "absolutePath": "project:/contracts/BookRater.sol",
       "exportedSymbols": {
         "BookRater": [
-          43
+          51
         ]
       }
     },
@@ -665,17 +794,17 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            43
+            51
           ],
           "name": "BookRater",
-          "scope": 44
+          "scope": 52
         },
         "children": [
           {
             "attributes": {
               "constant": false,
               "name": "taskCount",
-              "scope": 43,
+              "scope": 51,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -717,7 +846,7 @@
             "attributes": {
               "canonicalName": "BookRater.Rater",
               "name": "Rater",
-              "scope": 43,
+              "scope": 51,
               "visibility": "public"
             },
             "children": [
@@ -780,35 +909,35 @@
                   "scope": 11,
                   "stateVariable": false,
                   "storageLocation": "default",
-                  "type": "bool",
+                  "type": "uint256",
                   "value": null,
                   "visibility": "internal"
                 },
                 "children": [
                   {
                     "attributes": {
-                      "name": "bool",
-                      "type": "bool"
+                      "name": "uint256",
+                      "type": "uint256"
                     },
                     "id": 9,
                     "name": "ElementaryTypeName",
-                    "src": "162:4:0"
+                    "src": "162:7:0"
                   }
                 ],
                 "id": 10,
                 "name": "VariableDeclaration",
-                "src": "162:11:0"
+                "src": "162:14:0"
               }
             ],
             "id": 11,
             "name": "StructDefinition",
-            "src": "92:89:0"
+            "src": "92:92:0"
           },
           {
             "attributes": {
               "constant": false,
               "name": "ratedBooks",
-              "scope": 43,
+              "scope": 51,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => struct BookRater.Rater)",
@@ -828,7 +957,7 @@
                     },
                     "id": 12,
                     "name": "ElementaryTypeName",
-                    "src": "197:7:0"
+                    "src": "200:7:0"
                   },
                   {
                     "attributes": {
@@ -839,17 +968,17 @@
                     },
                     "id": 13,
                     "name": "UserDefinedTypeName",
-                    "src": "208:5:0"
+                    "src": "211:5:0"
                   }
                 ],
                 "id": 14,
                 "name": "Mapping",
-                "src": "189:25:0"
+                "src": "192:25:0"
               }
             ],
             "id": 15,
             "name": "VariableDeclaration",
-            "src": "189:43:0"
+            "src": "192:43:0"
           },
           {
             "attributes": {
@@ -861,7 +990,7 @@
                 null
               ],
               "name": "createTask",
-              "scope": 43,
+              "scope": 51,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -873,7 +1002,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_content",
-                      "scope": 34,
+                      "scope": 36,
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "type": "string",
@@ -888,17 +1017,43 @@
                         },
                         "id": 16,
                         "name": "ElementaryTypeName",
-                        "src": "261:6:0"
+                        "src": "264:6:0"
                       }
                     ],
                     "id": 17,
                     "name": "VariableDeclaration",
-                    "src": "261:22:0"
+                    "src": "264:22:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "rating",
+                      "scope": 36,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 18,
+                        "name": "ElementaryTypeName",
+                        "src": "288:4:0"
+                      }
+                    ],
+                    "id": 19,
+                    "name": "VariableDeclaration",
+                    "src": "288:11:0"
                   }
                 ],
-                "id": 18,
+                "id": 20,
                 "name": "ParameterList",
-                "src": "260:24:0"
+                "src": "263:37:0"
               },
               {
                 "attributes": {
@@ -907,9 +1062,9 @@
                   ]
                 },
                 "children": [],
-                "id": 19,
+                "id": 21,
                 "name": "ParameterList",
-                "src": "292:0:0"
+                "src": "308:0:0"
               },
               {
                 "children": [
@@ -937,19 +1092,19 @@
                               "type": "uint256",
                               "value": "taskCount"
                             },
-                            "id": 20,
+                            "id": 22,
                             "name": "Identifier",
-                            "src": "303:9:0"
+                            "src": "319:9:0"
                           }
                         ],
-                        "id": 21,
+                        "id": 23,
                         "name": "UnaryOperation",
-                        "src": "303:11:0"
+                        "src": "319:11:0"
                       }
                     ],
-                    "id": 22,
+                    "id": 24,
                     "name": "ExpressionStatement",
-                    "src": "303:11:0"
+                    "src": "319:11:0"
                   },
                   {
                     "children": [
@@ -984,9 +1139,9 @@
                                   "type": "mapping(uint256 => struct BookRater.Rater storage ref)",
                                   "value": "ratedBooks"
                                 },
-                                "id": 23,
+                                "id": 25,
                                 "name": "Identifier",
-                                "src": "325:10:0"
+                                "src": "341:10:0"
                               },
                               {
                                 "attributes": {
@@ -998,14 +1153,14 @@
                                   "type": "uint256",
                                   "value": "taskCount"
                                 },
-                                "id": 24,
+                                "id": 26,
                                 "name": "Identifier",
-                                "src": "336:9:0"
+                                "src": "352:9:0"
                               }
                             ],
-                            "id": 25,
+                            "id": 27,
                             "name": "IndexAccess",
-                            "src": "325:21:0"
+                            "src": "341:21:0"
                           },
                           {
                             "attributes": {
@@ -1034,8 +1189,8 @@
                                       "typeString": "string memory"
                                     },
                                     {
-                                      "typeIdentifier": "t_bool",
-                                      "typeString": "bool"
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
                                     }
                                   ],
                                   "overloadedDeclarations": [
@@ -1045,9 +1200,9 @@
                                   "type": "type(struct BookRater.Rater storage pointer)",
                                   "value": "Rater"
                                 },
-                                "id": 26,
+                                "id": 28,
                                 "name": "Identifier",
-                                "src": "349:5:0"
+                                "src": "365:5:0"
                               },
                               {
                                 "attributes": {
@@ -1059,9 +1214,9 @@
                                   "type": "uint256",
                                   "value": "taskCount"
                                 },
-                                "id": 27,
+                                "id": 29,
                                 "name": "Identifier",
-                                "src": "355:9:0"
+                                "src": "371:9:0"
                               },
                               {
                                 "attributes": {
@@ -1073,51 +1228,48 @@
                                   "type": "string memory",
                                   "value": "_content"
                                 },
-                                "id": 28,
+                                "id": 30,
                                 "name": "Identifier",
-                                "src": "366:8:0"
+                                "src": "382:8:0"
                               },
                               {
                                 "attributes": {
                                   "argumentTypes": null,
-                                  "hexvalue": "66616c7365",
-                                  "isConstant": false,
-                                  "isLValue": false,
-                                  "isPure": true,
-                                  "lValueRequested": false,
-                                  "subdenomination": null,
-                                  "token": "bool",
-                                  "type": "bool",
-                                  "value": "false"
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 19,
+                                  "type": "uint256",
+                                  "value": "rating"
                                 },
-                                "id": 29,
-                                "name": "Literal",
-                                "src": "376:5:0"
+                                "id": 31,
+                                "name": "Identifier",
+                                "src": "392:6:0"
                               }
                             ],
-                            "id": 30,
+                            "id": 32,
                             "name": "FunctionCall",
-                            "src": "349:33:0"
+                            "src": "365:34:0"
                           }
                         ],
-                        "id": 31,
+                        "id": 33,
                         "name": "Assignment",
-                        "src": "325:57:0"
+                        "src": "341:58:0"
                       }
                     ],
-                    "id": 32,
+                    "id": 34,
                     "name": "ExpressionStatement",
-                    "src": "325:57:0"
+                    "src": "341:58:0"
                   }
                 ],
-                "id": 33,
+                "id": 35,
                 "name": "Block",
-                "src": "292:98:0"
+                "src": "308:99:0"
               }
             ],
-            "id": 34,
+            "id": 36,
             "name": "FunctionDefinition",
-            "src": "241:149:0"
+            "src": "244:163:0"
           },
           {
             "attributes": {
@@ -1129,7 +1281,7 @@
                 null
               ],
               "name": "",
-              "scope": 43,
+              "scope": 51,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1142,9 +1294,9 @@
                   ]
                 },
                 "children": [],
-                "id": 35,
+                "id": 37,
                 "name": "ParameterList",
-                "src": "409:2:0"
+                "src": "426:2:0"
               },
               {
                 "attributes": {
@@ -1153,9 +1305,9 @@
                   ]
                 },
                 "children": [],
-                "id": 36,
+                "id": 38,
                 "name": "ParameterList",
-                "src": "418:0:0"
+                "src": "435:0:0"
               },
               {
                 "children": [
@@ -1180,67 +1332,172 @@
                             "attributes": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_stringliteral_7034af19a3a271767aec1560f66ec5701a4f6db725aefcc84e01c83860303071",
-                                  "typeString": "literal_string \"Emma\""
+                                  "typeIdentifier": "t_stringliteral_a8d70be257aef506ba2099a57e0a6fde34051e86304f72286613fafe9e721291",
+                                  "typeString": "literal_string \"The Seven Husbands of Evelyn Hugo\""
+                                },
+                                {
+                                  "typeIdentifier": "t_rational_8_by_1",
+                                  "typeString": "int_const 8"
                                 }
                               ],
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 34,
-                              "type": "function (string memory)",
+                              "referencedDeclaration": 36,
+                              "type": "function (string memory,uint256)",
                               "value": "createTask"
                             },
-                            "id": 37,
+                            "id": 39,
                             "name": "Identifier",
-                            "src": "429:10:0"
+                            "src": "446:10:0"
                           },
                           {
                             "attributes": {
                               "argumentTypes": null,
-                              "hexvalue": "456d6d61",
+                              "hexvalue": "54686520536576656e2048757362616e6473206f66204576656c796e204875676f",
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "lValueRequested": false,
                               "subdenomination": null,
                               "token": "string",
-                              "type": "literal_string \"Emma\"",
-                              "value": "Emma"
+                              "type": "literal_string \"The Seven Husbands of Evelyn Hugo\"",
+                              "value": "The Seven Husbands of Evelyn Hugo"
                             },
-                            "id": 38,
+                            "id": 40,
                             "name": "Literal",
-                            "src": "440:6:0"
+                            "src": "457:35:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "38",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 8",
+                              "value": "8"
+                            },
+                            "id": 41,
+                            "name": "Literal",
+                            "src": "493:1:0"
                           }
                         ],
-                        "id": 39,
+                        "id": 42,
                         "name": "FunctionCall",
-                        "src": "429:18:0"
+                        "src": "446:49:0"
                       }
                     ],
-                    "id": 40,
+                    "id": 43,
                     "name": "ExpressionStatement",
-                    "src": "429:18:0"
+                    "src": "446:49:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_862656dccc682fa1e475e699e4169334ae481e9cd6bbf1685fec431a0cb0368c",
+                                  "typeString": "literal_string \"The Vanishing Half\""
+                                },
+                                {
+                                  "typeIdentifier": "t_rational_9_by_1",
+                                  "typeString": "int_const 9"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 36,
+                              "type": "function (string memory,uint256)",
+                              "value": "createTask"
+                            },
+                            "id": 44,
+                            "name": "Identifier",
+                            "src": "506:10:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "5468652056616e697368696e672048616c66",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"The Vanishing Half\"",
+                              "value": "The Vanishing Half"
+                            },
+                            "id": 45,
+                            "name": "Literal",
+                            "src": "517:20:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "39",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 9",
+                              "value": "9"
+                            },
+                            "id": 46,
+                            "name": "Literal",
+                            "src": "538:1:0"
+                          }
+                        ],
+                        "id": 47,
+                        "name": "FunctionCall",
+                        "src": "506:34:0"
+                      }
+                    ],
+                    "id": 48,
+                    "name": "ExpressionStatement",
+                    "src": "506:34:0"
                   }
                 ],
-                "id": 41,
+                "id": 49,
                 "name": "Block",
-                "src": "418:39:0"
+                "src": "435:115:0"
               }
             ],
-            "id": 42,
+            "id": 50,
             "name": "FunctionDefinition",
-            "src": "398:59:0"
+            "src": "415:135:0"
           }
         ],
-        "id": 43,
+        "id": 51,
         "name": "ContractDefinition",
-        "src": "29:431:0"
+        "src": "29:524:0"
       }
     ],
-    "id": 44,
+    "id": 52,
     "name": "SourceUnit",
-    "src": "0:462:0"
+    "src": "0:555:0"
   },
   "compiler": {
     "name": "solc",
@@ -1250,12 +1507,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xc796Ec228995833D93C32960c1b182bf5ACbF424",
-      "transactionHash": "0x48fd64fe67b9a550687c20a6a7a39ce3ef3506a164d6fb5a77057ce258bdbfd8"
+      "address": "0x91150C766fA2cE5c8B53e7B53A6A05809e4423aF",
+      "transactionHash": "0x48c86cc02ec0648f3db81798a443e5dc5842b3dde8df083ecaa41c079eed7a69"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-01-12T15:01:58.653Z",
+  "updatedAt": "2022-01-12T15:18:27.421Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

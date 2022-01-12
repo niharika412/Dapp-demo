@@ -6,17 +6,18 @@ contract BookRater {
     struct Rater {
         uint256 id;
         string content;
-        bool rating;
+        uint256 rating;
     }
 
     mapping(uint256 => Rater) public ratedBooks;
 
-    function createTask(string memory _content) public {
+    function createTask(string memory _content, uint rating) public {
         taskCount++;
-        ratedBooks[taskCount] = Rater(taskCount, _content, false);
+        ratedBooks[taskCount] = Rater(taskCount, _content, rating);
     }
 
     constructor() public{
-        createTask("Emma");
+        createTask("The Seven Husbands of Evelyn Hugo",8);
+        createTask("The Vanishing Half",9);
       }
 }

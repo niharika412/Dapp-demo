@@ -20,4 +20,9 @@ contract BookRater {
         createTask("The Seven Husbands of Evelyn Hugo",8);
         createTask("The Vanishing Half",9);
       }
+    
+    function changeRating(uint taskno,uint rating) public {
+        Rater storage b1 = ratedBooks[taskno];
+        b1.rating = rating;
+    }
 }

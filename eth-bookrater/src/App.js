@@ -22,57 +22,76 @@ class App extends Component {
         ratedBooks: [...this.state.ratedBooks, task]
       })
     }
-}
-
-constructor(props) {
-  super(props)
-  this.state = {
-    account: '',
-    taskCount: 0,
-    ratedBooks: []
   }
-}
 
-render() {
-  return (
-    <div>
-      <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="http://www.dappuniversity.com/free-download" target="_blank">Book Rater Application</a>
-        <ul className="navbar-nav px-3">
-          <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-            <small><a className="nav-link" href="#"><span id="account"></span></a></small>
-          </li>
-        </ul>
-      </nav>
-      <div className="jumbotron">
-        <div>
-          <main role="main" className="justify-content-center">
-            <div id="loader" className="text-center">
-              <p className="text-center">Loading...</p>
-            </div>
-            <div id="content">
-              <h3>Books available:</h3>
-              <ul id="taskList" className="list-unstyled">
-                { this.state.ratedBooks.map((task, key) => {
-                  return(
-                    <div className="taskTemplate" className="checkbox" key={key}>
-                      <label>
-                        <input type="checkbox" />
-                        <span className="content">{task.content}</span>
-                      </label>
-                    </div>
-                  )
-                })}
-              </ul>
-              <ul id="completedTaskList" className="list-unstyled">
-              </ul>
-            </div>
-          </main>
+  constructor(props) {
+    super(props)
+    this.state = {
+      account: '',
+      taskCount: 0,
+      ratedBooks: [],
+      new:''
+    }
+  }
+
+
+  handleAddBook(e){
+    //e.preventDefault();
+    this.setState({new: e.target.value});
+  }
+
+  render() {
+    return (
+      <div>
+        <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+          <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="http://www.dappuniversity.com/free-download" target="_blank">Book Rater Application</a>
+          <ul className="navbar-nav px-3">
+            <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
+              <small><a className="nav-link" href="#"><span id="account"></span></a></small>
+            </li>
+          </ul>
+        </nav>
+        <div className="jumbotron">
+          <div>
+            <main role="main" className="justify-content-center">
+              <div id="loader" className="text-center">
+                <p className="text-center">Loading...</p>
+              </div>
+              <div className='row'>
+                <div className='col-3'>
+                  <div id="content">
+                    <ul>
+                      {this.state.ratedBooks.map((task, key) => {
+                        return (
+                          <div className="taskTemplate" className="checkbox" key={key}>
+                            <button className="content btn btn-secondary">{task.content}</button>
+                          </div>
+                        )
+                      })}
+                    </ul>
+                    <ul id="completedTaskList" className="list-unstyled">
+                    </ul>
+                  </div>
+                </div>
+                <div className='col-9'>
+                  <div className='card'>
+                    <form>
+                      <div className="form-group">
+                        <label htmlFor="exampleInputEmail1" >Add new Book</label>
+                        <input type="text" className="form-control" id="addBook" placeholder="Enter a book to be added"></input>
+                        <small id="addBook" className="form-text text-muted">We'll never share your info with anyone else</small>
+                      </div>
+                      <button className="btn btn-primary" onChange={this.handleAddBook} value={this.state.new}>Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }
 
 export default App;

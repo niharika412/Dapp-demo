@@ -1,4 +1,4 @@
-export const TODO_LIST_ADDRESS = '0x73f1aD3c1aBd169C79F90DE54e831d7d4fE0ddbf'
+export const TODO_LIST_ADDRESS = '0xc4929930362e2196D2Ef2d06bEB6fFe450c48805'
 
 export const TODO_LIST_ABI = [
 	{

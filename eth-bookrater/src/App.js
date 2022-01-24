@@ -7,7 +7,7 @@ class App extends Component {
   componentDidMount() {
     this.loadBlockchainData()
   }
-
+  
   async loadBlockchainData() {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:7545")
     const accounts = await web3.eth.getAccounts()
@@ -30,21 +30,27 @@ class App extends Component {
       account: '',
       taskCount: 0,
       ratedBooks: [],
-      new:''
+      new: ''
     }
   }
 
 
-  handleAddBook(e){
+  handleAddBook(e) {
     //e.preventDefault();
-    this.setState({new: e.target.value});
+    this.setState({new: e.target.value });
+  }
+
+  async addNew(e){
+    e.preventDefault();
+    const task = await this.state.bkRater.methods.createTask(this.state.new,0).call();
+    this.loadBlockchainData();
   }
 
   render() {
     return (
       <div>
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-          <a className="navbar-brand col-sm-3 col-md-2 mr-0" href="http://www.dappuniversity.com/free-download" target="_blank">Book Rater Application</a>
+          <a className="navbar-brand col-sm-3 col-md-2 mr-0" target="_blank">Book Rater Application</a>
           <ul className="navbar-nav px-3">
             <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
               <small><a className="nav-link" href="#"><span id="account"></span></a></small>
@@ -78,10 +84,10 @@ class App extends Component {
                     <form>
                       <div className="form-group">
                         <label htmlFor="exampleInputEmail1" >Add new Book</label>
-                        <input type="text" className="form-control" id="addBook" placeholder="Enter a book to be added"></input>
+                        <input type="text" className="form-control" id="addBook" placeholder="Enter a book to be added" value={this.state.new} onChange={this.handleAddBook.bind(this)}></input>
                         <small id="addBook" className="form-text text-muted">We'll never share your info with anyone else</small>
                       </div>
-                      <button className="btn btn-primary" onChange={this.handleAddBook} value={this.state.new}>Submit</button>
+                      <button className="btn btn-primary" onClick={this.addNew.bind(this)}>Submit</button>
                     </form>
                   </div>
                 </div>

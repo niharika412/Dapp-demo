@@ -9,7 +9,13 @@ class App extends Component {
   }
   
   async loadBlockchainData() {
-    const web3 = new Web3(Web3.givenProvider || "http://localhost:7545")
+    this.setState({
+      account: '',
+      taskCount: 0,
+      ratedBooks: [],
+      new: ''
+    });
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
     const bkRater = new web3.eth.Contract(TODO_LIST_ABI, TODO_LIST_ADDRESS)
@@ -42,7 +48,7 @@ class App extends Component {
 
   async addNew(e){
     e.preventDefault();
-    const task = await this.state.bkRater.methods.createTask(this.state.new,0).call();
+    const task = await this.state.bkRater.methods.createTask(this.state.new,0).send({ from: this.state.account });
     this.loadBlockchainData();
   }
 

@@ -8,6 +8,38 @@
       "type": "constructor"
     },
     {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "task",
+          "type": "uint256"
+        }
+      ],
+      "name": "BookDeleted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "bookName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "rating",
+          "type": "uint256"
+        }
+      ],
+      "name": "BooksUpdated",
+      "type": "event"
+    },
+    {
       "constant": true,
       "inputs": [
         {
@@ -92,23 +124,38 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "taskno",
+          "type": "uint256"
+        }
+      ],
+      "name": "deleteRating",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"taskno\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rating\",\"type\":\"uint256\"}],\"name\":\"changeRating\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_content\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rating\",\"type\":\"uint256\"}],\"name\":\"createTask\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"ratedBooks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"content\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rating\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"taskCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BookRater.sol\":\"BookRater\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/BookRater.sol\":{\"keccak256\":\"0x2279a6124ab171c84c70c2dba2f5a9ba8fe581872a86edef2ef919c973c41332\",\"urls\":[\"bzz-raw://0bbb8a93453c1e285657af5d2d3ae91d8dbdb6097675ed6b00e4f13a3eb36ca1\",\"dweb:/ipfs/QmbvLPvRgpkmXZ5KkH3w6AKMh1w1VHrzdRJ8AKbzXidigv\"]}},\"version\":1}",
-  "bytecode": "0x60806040526000805534801561001457600080fd5b5061004160405180606001604052806021815260200161055d6021913960086001600160e01b0361008316565b6040805180820190915260128152712a3432902b30b734b9b434b733902430b63360711b602082015261007e9060096001600160e01b0361008316565b61017d565b60008054600190810180835560408051606081018252828152602080820188815282840188905293865284815291909420845181559151805192936100d0939085019291909101906100e2565b50604082015181600201559050505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061012357805160ff1916838001178555610150565b82800160010185558215610150579182015b82811115610150578251825591602001919060010190610135565b5061015c929150610160565b5090565b61017a91905b8082111561015c5760008155600101610166565b90565b6103d18061018c6000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c806304fe2b3414610051578063271dd589146100fb57806349ebcd4c1461011e578063b6cb58a5146101c1575b600080fd5b6100f96004803603604081101561006757600080fd5b81019060208101813564010000000081111561008257600080fd5b82018360208201111561009457600080fd5b803590602001918460018302840111640100000000831117156100b657600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955050913592506101db915050565b005b6100f96004803603604081101561011157600080fd5b508035906020013561023a565b61013b6004803603602081101561013457600080fd5b503561024f565b6040518084815260200180602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561018457818101518382015260200161016c565b50505050905090810190601f1680156101b15780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b6101c96102fb565b60408051918252519081900360200190f35b600080546001908101808355604080516060810182528281526020808201888152828401889052938652848152919094208451815591518051929361022893908501929190910190610301565b50604082015181600201559050505050565b60009182526001602052604090912060020155565b600160208181526000928352604092839020805481840180548651600296821615610100026000190190911695909504601f810185900485028601850190965285855290949193929091908301828280156102eb5780601f106102c0576101008083540402835291602001916102eb565b820191906000526020600020905b8154815290600101906020018083116102ce57829003601f168201915b5050505050908060020154905083565b60005481565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061034257805160ff191683800117855561036f565b8280016001018555821561036f579182015b8281111561036f578251825591602001919060010190610354565b5061037b92915061037f565b5090565b61039991905b8082111561037b5760008155600101610385565b9056fea265627a7a723158208158ddecaa00dda8f72dd70f7f249fb2389d2bb4ccb9bb6f81b6e1efbb9fa8a364736f6c6343000510003254686520536576656e2048757362616e6473206f66204576656c796e204875676f",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c806304fe2b3414610051578063271dd589146100fb57806349ebcd4c1461011e578063b6cb58a5146101c1575b600080fd5b6100f96004803603604081101561006757600080fd5b81019060208101813564010000000081111561008257600080fd5b82018360208201111561009457600080fd5b803590602001918460018302840111640100000000831117156100b657600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955050913592506101db915050565b005b6100f96004803603604081101561011157600080fd5b508035906020013561023a565b61013b6004803603602081101561013457600080fd5b503561024f565b6040518084815260200180602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561018457818101518382015260200161016c565b50505050905090810190601f1680156101b15780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b6101c96102fb565b60408051918252519081900360200190f35b600080546001908101808355604080516060810182528281526020808201888152828401889052938652848152919094208451815591518051929361022893908501929190910190610301565b50604082015181600201559050505050565b60009182526001602052604090912060020155565b600160208181526000928352604092839020805481840180548651600296821615610100026000190190911695909504601f810185900485028601850190965285855290949193929091908301828280156102eb5780601f106102c0576101008083540402835291602001916102eb565b820191906000526020600020905b8154815290600101906020018083116102ce57829003601f168201915b5050505050908060020154905083565b60005481565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061034257805160ff191683800117855561036f565b8280016001018555821561036f579182015b8281111561036f578251825591602001919060010190610354565b5061037b92915061037f565b5090565b61039991905b8082111561037b5760008155600101610385565b9056fea265627a7a723158208158ddecaa00dda8f72dd70f7f249fb2389d2bb4ccb9bb6f81b6e1efbb9fa8a364736f6c63430005100032",
-  "sourceMap": "29:675:0:-;;;82:1;55:28;;415:135;8:9:-1;5:2;;;30:1;27;20:12;5:2;415:135:0;446:49;;;;;;;;;;;;;;;;;;493:1;-1:-1:-1;;;;;446:10:0;:49;:::i;:::-;506:34;;;;;;;;;;;;-1:-1:-1;;;506:34:0;;;;;;538:1;-1:-1:-1;;;;;506:10:0;:34;:::i;:::-;29:675;;244:163;319:9;:11;;;;;;;;;365:34;;;;;;;;;;;;;;;;;;;;;;;;341:21;;;;;;;;;;:58;;;;;;;;:21;;:58;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;244:163;;:::o;29:675::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;29:675:0;;;-1:-1:-1;29:675:0;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
-  "deployedSourceMap": "29:675:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;29:675:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;244:163;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;244:163:0;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;244:163:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;244:163:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;244:163:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;244:163:0;;-1:-1:-1;;244:163:0;;;-1:-1:-1;244:163:0;;-1:-1:-1;;244:163:0:i;:::-;;562:139;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;562:139:0;;;;;;;:::i;192:43::-;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;192:43:0;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;192:43:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;55:28;;;:::i;:::-;;;;;;;;;;;;;;;;244:163;319:9;:11;;;;;;;;;365:34;;;;;;;;;;;;;;;;;;;;;;;;341:21;;;;;;;;;;:58;;;;;;;;:21;;:58;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;244:163;;:::o;562:139::-;627:16;646:18;;;:10;:18;;;;;;675:9;;:18;562:139::o;192:43::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;192:43:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;55:28::-;;;;:::o;29:675::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;29:675:0;;;-1:-1:-1;29:675:0;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity >=0.5.16;\r\n\r\ncontract BookRater {\r\n    uint256 public taskCount = 0;\r\n\r\n    struct Rater {\r\n        uint256 id;\r\n        string content;\r\n        uint256 rating;\r\n    }\r\n\r\n    mapping(uint256 => Rater) public ratedBooks;\r\n\r\n    function createTask(string memory _content, uint rating) public {\r\n        taskCount++;\r\n        ratedBooks[taskCount] = Rater(taskCount, _content, rating);\r\n    }\r\n\r\n    constructor() public{\r\n        createTask(\"The Seven Husbands of Evelyn Hugo\",8);\r\n        createTask(\"The Vanishing Half\",9);\r\n      }\r\n    \r\n    function changeRating(uint taskno,uint rating) public {\r\n        Rater storage b1 = ratedBooks[taskno];\r\n        b1.rating = rating;\r\n    }\r\n}\r\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"task\",\"type\":\"uint256\"}],\"name\":\"BookDeleted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"bookName\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"rating\",\"type\":\"uint256\"}],\"name\":\"BooksUpdated\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"taskno\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rating\",\"type\":\"uint256\"}],\"name\":\"changeRating\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_content\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rating\",\"type\":\"uint256\"}],\"name\":\"createTask\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"taskno\",\"type\":\"uint256\"}],\"name\":\"deleteRating\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"ratedBooks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"content\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"rating\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"taskCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/BookRater.sol\":\"BookRater\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/BookRater.sol\":{\"keccak256\":\"0x6dfda8d27848a3313988830d4202c5936166487fb40e00471945bbcc6c1f5bf9\",\"urls\":[\"bzz-raw://1ea77e51597e438e50a8891ea385a28b8ee3351a41d8bf3727d6067105d75f18\",\"dweb:/ipfs/QmY3SezAA8bt8Xzti6vwTvU8xnDQX7C1dWiAzqxPSBvzJc\"]}},\"version\":1}",
+  "bytecode": "0x60806040526000805534801561001457600080fd5b5061004160405180606001604052806021815260200161077a6021913960086001600160e01b0361008316565b6040805180820190915260128152712a3432902b30b734b9b434b733902430b63360711b602082015261007e9060096001600160e01b0361008316565b61017d565b60008054600190810180835560408051606081018252828152602080820188815282840188905293865284815291909420845181559151805192936100d0939085019291909101906100e2565b50604082015181600201559050505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061012357805160ff1916838001178555610150565b82800160010185558215610150579182015b82811115610150578251825591602001919060010190610135565b5061015c929150610160565b5090565b61017a91905b8082111561015c5760008155600101610166565b90565b6105ee8061018c6000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c806304fe2b341461005c578063271dd5891461010657806349ebcd4c14610129578063b6cb58a5146101cc578063e7ce20b9146101e6575b600080fd5b6101046004803603604081101561007257600080fd5b81019060208101813564010000000081111561008d57600080fd5b82018360208201111561009f57600080fd5b803590602001918460018302840111640100000000831117156100c157600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295505091359250610203915050565b005b6101046004803603604081101561011c57600080fd5b5080359060200135610262565b6101466004803603602081101561013f57600080fd5b503561037e565b6040518084815260200180602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561018f578181015183820152602001610177565b50505050905090810190601f1680156101bc5780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b6101d461042a565b60408051918252519081900360200190f35b610104600480360360208110156101fc57600080fd5b5035610430565b6000805460019081018083556040805160608101825282815260208082018881528284018890529386528481529190942084518155915180519293610250939085019291909101906104de565b50604082015181600201559050505050565b6000548211156102ae576040805162461bcd60e51b8152602060048201526012602482015271496e76616c696420426f6f6b204944206e6f60701b604482015290519081900360640190fd5b60008281526001602081815260409283902060028082018690558451928301869052848352818401805494851615610100026000190190941604938201849052927f0a9dbd8ba48fa172b8eaf9beb0471203265420b7513b04bb65b56e201af77f8792918591819060608201908590801561036a5780601f1061033f5761010080835404028352916020019161036a565b820191906000526020600020905b81548152906001019060200180831161034d57829003601f168201915b5050935050505060405180910390a1505050565b600160208181526000928352604092839020805481840180548651600296821615610100026000190190911695909504601f8101859004850286018501909652858552909491939290919083018282801561041a5780601f106103ef5761010080835404028352916020019161041a565b820191906000526020600020905b8154815290600101906020018083116103fd57829003601f168201915b5050505050908060020154905083565b60005481565b60005481111561047d576040805162461bcd60e51b815260206004820152601360248201527224b73b30b634b2102137b7b59024a21037379760691b604482015290519081900360640190fd5b60008181526001602081905260408220828155919061049e9083018261055c565b506000600291909101556040805182815290517ed5ed47574df40471633fbb8b010e6a63564a4d1b16a1de678595713ab3150d9181900360200190a15b50565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061051f57805160ff191683800117855561054c565b8280016001018555821561054c579182015b8281111561054c578251825591602001919060010190610531565b5061055892915061059c565b5090565b50805460018160011615610100020316600290046000825580601f1061058257506104db565b601f0160209004906000526020600020908101906104db91905b6105b691905b8082111561055857600081556001016105a2565b9056fea265627a7a72315820fd72f1b2e32e3b7bad02a3893eff15c3a61b3b370e0c23a10ced7350e5bc3c1664736f6c6343000510003254686520536576656e2048757362616e6473206f66204576656c796e204875676f",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100575760003560e01c806304fe2b341461005c578063271dd5891461010657806349ebcd4c14610129578063b6cb58a5146101cc578063e7ce20b9146101e6575b600080fd5b6101046004803603604081101561007257600080fd5b81019060208101813564010000000081111561008d57600080fd5b82018360208201111561009f57600080fd5b803590602001918460018302840111640100000000831117156100c157600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295505091359250610203915050565b005b6101046004803603604081101561011c57600080fd5b5080359060200135610262565b6101466004803603602081101561013f57600080fd5b503561037e565b6040518084815260200180602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561018f578181015183820152602001610177565b50505050905090810190601f1680156101bc5780820380516001836020036101000a031916815260200191505b5094505050505060405180910390f35b6101d461042a565b60408051918252519081900360200190f35b610104600480360360208110156101fc57600080fd5b5035610430565b6000805460019081018083556040805160608101825282815260208082018881528284018890529386528481529190942084518155915180519293610250939085019291909101906104de565b50604082015181600201559050505050565b6000548211156102ae576040805162461bcd60e51b8152602060048201526012602482015271496e76616c696420426f6f6b204944206e6f60701b604482015290519081900360640190fd5b60008281526001602081815260409283902060028082018690558451928301869052848352818401805494851615610100026000190190941604938201849052927f0a9dbd8ba48fa172b8eaf9beb0471203265420b7513b04bb65b56e201af77f8792918591819060608201908590801561036a5780601f1061033f5761010080835404028352916020019161036a565b820191906000526020600020905b81548152906001019060200180831161034d57829003601f168201915b5050935050505060405180910390a1505050565b600160208181526000928352604092839020805481840180548651600296821615610100026000190190911695909504601f8101859004850286018501909652858552909491939290919083018282801561041a5780601f106103ef5761010080835404028352916020019161041a565b820191906000526020600020905b8154815290600101906020018083116103fd57829003601f168201915b5050505050908060020154905083565b60005481565b60005481111561047d576040805162461bcd60e51b815260206004820152601360248201527224b73b30b634b2102137b7b59024a21037379760691b604482015290519081900360640190fd5b60008181526001602081905260408220828155919061049e9083018261055c565b506000600291909101556040805182815290517ed5ed47574df40471633fbb8b010e6a63564a4d1b16a1de678595713ab3150d9181900360200190a15b50565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061051f57805160ff191683800117855561054c565b8280016001018555821561054c579182015b8281111561054c578251825591602001919060010190610531565b5061055892915061059c565b5090565b50805460018160011615610100020316600290046000825580601f1061058257506104db565b601f0160209004906000526020600020908101906104db91905b6105b691905b8082111561055857600081556001016105a2565b9056fea265627a7a72315820fd72f1b2e32e3b7bad02a3893eff15c3a61b3b370e0c23a10ced7350e5bc3c1664736f6c63430005100032",
+  "sourceMap": "59:1250:0:-;;;112:1;85:28;;565:136;8:9:-1;5:2;;;30:1;27;20:12;5:2;565:136:0;597:50;;;;;;;;;;;;;;;;;;645:1;-1:-1:-1;;;;;597:10:0;:50;:::i;:::-;658:35;;;;;;;;;;;;-1:-1:-1;;;658:35:0;;;;;;691:1;-1:-1:-1;;;;;658:10:0;:35;:::i;:::-;59:1250;;391:166;469:9;:11;;;;;;;;;515:34;;;;;;;;;;;;;;;;;;;;;;;;491:21;;;;;;;;;;:58;;;;;;;;:21;;:58;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;391:166;;:::o;59:1250::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;59:1250:0;;;-1:-1:-1;59:1250:0;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "59:1250:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;59:1250:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;391:166;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;391:166:0;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;391:166:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;391:166:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;391:166:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;391:166:0;;-1:-1:-1;;391:166:0;;;-1:-1:-1;391:166:0;;-1:-1:-1;;391:166:0:i;:::-;;726:318;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;726:318:0;;;;;;;:::i;222:43::-;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;222:43:0;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;222:43:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;85:28;;;:::i;:::-;;;;;;;;;;;;;;;;1069:237;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1069:237:0;;:::i;391:166::-;469:9;:11;;;;;;;;;515:34;;;;;;;;;;;;;;;;;;;;;;;;491:21;;;;;;;;;;:58;;;;;;;;:21;;:58;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;391:166;;:::o;726:318::-;811:9;;802:6;:18;798:239;;;837:30;;;-1:-1:-1;;;837:30:0;;;;;;;;;;;;-1:-1:-1;;;837:30:0;;;;;;;;;;;;;;798:239;900:16;919:18;;;:10;:18;;;;;;;;;952:9;;;;:18;;;990:35;;;;;;;;;;;1003:10;;;990:35;;;;;;;;-1:-1:-1;;990:35:0;;;;;;;;;;;919:18;990:35;;1003:10;952:18;;990:35;;;;;;1003:10;;990:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;798:239;726:318;;:::o;222:43::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;222:43:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;85:28::-;;;;:::o;1069:237::-;1138:9;;1129:6;:18;1125:174;;;1163:29;;;-1:-1:-1;;;1163:29:0;;;;;;;;;;;;-1:-1:-1;;;1163:29:0;;;;;;;;;;;;;;1125:174;1230:18;;;;:10;:18;;;;;;;1223:25;;;1230:18;;1223:25;;;;1230:18;1223:25;:::i;:::-;-1:-1:-1;1223:25:0;;;;;;;1268:19;;;;;;;;;;;;;;;;;1125:174;1069:237;:::o;59:1250::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;59:1250:0;;;-1:-1:-1;59:1250:0;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity >=0.5.16;\r\n\r\n//aim is to create a CRUD Ap\r\ncontract BookRater {\r\n    uint256 public taskCount = 0;\r\n\r\n    struct Rater {\r\n        uint256 id;\r\n        string content;\r\n        uint256 rating;\r\n    }\r\n\r\n    mapping(uint256 => Rater) public ratedBooks;\r\n\r\n    event BooksUpdated(string bookName, uint256 rating);\r\n\r\n    event BookDeleted(uint256 task);\r\n\r\n    //create fn\r\n    function createTask(string memory _content, uint256 rating) public {\r\n        taskCount++;\r\n        ratedBooks[taskCount] = Rater(taskCount, _content, rating);\r\n    }\r\n\r\n    constructor() public {\r\n        createTask(\"The Seven Husbands of Evelyn Hugo\", 8);\r\n        createTask(\"The Vanishing Half\", 9);\r\n    }\r\n\r\n    //update fn\r\n    function changeRating(uint256 taskno, uint256 rating) public {\r\n        if (taskno > taskCount) {\r\n            revert((\"Invalid Book ID no\"));\r\n        } else {\r\n            Rater storage b1 = ratedBooks[taskno];\r\n            b1.rating = rating;\r\n            emit BooksUpdated(b1.content, b1.rating);\r\n        }\r\n    }\r\n\r\n    //delete fn\r\n    function deleteRating(uint256 taskno) public {\r\n        if (taskno > taskCount){\r\n            revert(\"Invalid Book ID no.\");\r\n        }else{\r\n            delete ratedBooks[taskno];\r\n            emit BookDeleted(taskno);\r\n        }\r\n    }\r\n}\r\n",
   "sourcePath": "D:\\DApp\\Dapp-demo\\eth-bookrateWS\\contracts\\BookRater.sol",
   "ast": {
     "absolutePath": "project:/contracts/BookRater.sol",
     "exportedSymbols": {
       "BookRater": [
-        71
+        124
       ]
     },
-    "id": 72,
+    "id": 125,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -128,9 +175,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 71,
+        "id": 124,
         "linearizedBaseContracts": [
-          71
+          124
         ],
         "name": "BookRater",
         "nodeType": "ContractDefinition",
@@ -140,8 +187,8 @@
             "id": 4,
             "name": "taskCount",
             "nodeType": "VariableDeclaration",
-            "scope": 71,
-            "src": "55:28:0",
+            "scope": 124,
+            "src": "85:28:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -152,7 +199,7 @@
               "id": 2,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
-              "src": "55:7:0",
+              "src": "85:7:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -168,7 +215,7 @@
               "kind": "number",
               "lValueRequested": false,
               "nodeType": "Literal",
-              "src": "82:1:0",
+              "src": "112:1:0",
               "subdenomination": null,
               "typeDescriptions": {
                 "typeIdentifier": "t_rational_0_by_1",
@@ -188,7 +235,7 @@
                 "name": "id",
                 "nodeType": "VariableDeclaration",
                 "scope": 11,
-                "src": "116:10:0",
+                "src": "146:10:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -199,7 +246,7 @@
                   "id": 5,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "116:7:0",
+                  "src": "146:7:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -214,7 +261,7 @@
                 "name": "content",
                 "nodeType": "VariableDeclaration",
                 "scope": 11,
-                "src": "137:14:0",
+                "src": "167:14:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -225,7 +272,7 @@
                   "id": 7,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "137:6:0",
+                  "src": "167:6:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -240,7 +287,7 @@
                 "name": "rating",
                 "nodeType": "VariableDeclaration",
                 "scope": 11,
-                "src": "162:14:0",
+                "src": "192:14:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -251,7 +298,7 @@
                   "id": 9,
                   "name": "uint256",
                   "nodeType": "ElementaryTypeName",
-                  "src": "162:7:0",
+                  "src": "192:7:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -263,8 +310,8 @@
             ],
             "name": "Rater",
             "nodeType": "StructDefinition",
-            "scope": 71,
-            "src": "92:92:0",
+            "scope": 124,
+            "src": "122:92:0",
             "visibility": "public"
           },
           {
@@ -272,8 +319,8 @@
             "id": 15,
             "name": "ratedBooks",
             "nodeType": "VariableDeclaration",
-            "scope": 71,
-            "src": "192:43:0",
+            "scope": 124,
+            "src": "222:43:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -286,14 +333,14 @@
                 "id": 12,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "200:7:0",
+                "src": "230:7:0",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
                 }
               },
               "nodeType": "Mapping",
-              "src": "192:25:0",
+              "src": "222:25:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Rater_$11_storage_$",
                 "typeString": "mapping(uint256 => struct BookRater.Rater)"
@@ -304,7 +351,7 @@
                 "name": "Rater",
                 "nodeType": "UserDefinedTypeName",
                 "referencedDeclaration": 11,
-                "src": "211:5:0",
+                "src": "241:5:0",
                 "typeDescriptions": {
                   "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
                   "typeString": "struct BookRater.Rater"
@@ -315,15 +362,126 @@
             "visibility": "public"
           },
           {
+            "anonymous": false,
+            "documentation": null,
+            "id": 21,
+            "name": "BooksUpdated",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 20,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 17,
+                  "indexed": false,
+                  "name": "bookName",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21,
+                  "src": "293:15:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 16,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "293:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 19,
+                  "indexed": false,
+                  "name": "rating",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 21,
+                  "src": "310:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 18,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "310:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "292:33:0"
+            },
+            "src": "274:52:0"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 25,
+            "name": "BookDeleted",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 24,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 23,
+                  "indexed": false,
+                  "name": "task",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 25,
+                  "src": "352:12:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 22,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "352:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "351:14:0"
+            },
+            "src": "334:32:0"
+          },
+          {
             "body": {
-              "id": 35,
+              "id": 45,
               "nodeType": "Block",
-              "src": "308:99:0",
+              "src": "458:99:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 23,
+                    "id": 33,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -331,15 +489,15 @@
                     "nodeType": "UnaryOperation",
                     "operator": "++",
                     "prefix": false,
-                    "src": "319:11:0",
+                    "src": "469:11:0",
                     "subExpression": {
                       "argumentTypes": null,
-                      "id": 22,
+                      "id": 32,
                       "name": "taskCount",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 4,
-                      "src": "319:9:0",
+                      "src": "469:9:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -350,14 +508,14 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 24,
+                  "id": 34,
                   "nodeType": "ExpressionStatement",
-                  "src": "319:11:0"
+                  "src": "469:11:0"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 33,
+                    "id": 43,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -366,26 +524,26 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 25,
+                        "id": 35,
                         "name": "ratedBooks",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 15,
-                        "src": "341:10:0",
+                        "src": "491:10:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Rater_$11_storage_$",
                           "typeString": "mapping(uint256 => struct BookRater.Rater storage ref)"
                         }
                       },
-                      "id": 27,
+                      "id": 37,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 26,
+                        "id": 36,
                         "name": "taskCount",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 4,
-                        "src": "352:9:0",
+                        "src": "502:9:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -396,7 +554,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "341:21:0",
+                      "src": "491:21:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Rater_$11_storage",
                         "typeString": "struct BookRater.Rater storage ref"
@@ -409,12 +567,12 @@
                       "arguments": [
                         {
                           "argumentTypes": null,
-                          "id": 29,
+                          "id": 39,
                           "name": "taskCount",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 4,
-                          "src": "371:9:0",
+                          "src": "521:9:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -422,12 +580,12 @@
                         },
                         {
                           "argumentTypes": null,
-                          "id": 30,
+                          "id": 40,
                           "name": "_content",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 17,
-                          "src": "382:8:0",
+                          "referencedDeclaration": 27,
+                          "src": "532:8:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_string_memory_ptr",
                             "typeString": "string memory"
@@ -435,12 +593,12 @@
                         },
                         {
                           "argumentTypes": null,
-                          "id": 31,
+                          "id": 41,
                           "name": "rating",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 19,
-                          "src": "392:6:0",
+                          "referencedDeclaration": 29,
+                          "src": "542:6:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -462,18 +620,18 @@
                             "typeString": "uint256"
                           }
                         ],
-                        "id": 28,
+                        "id": 38,
                         "name": "Rater",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 11,
-                        "src": "365:5:0",
+                        "src": "515:5:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_type$_t_struct$_Rater_$11_storage_ptr_$",
                           "typeString": "type(struct BookRater.Rater storage pointer)"
                         }
                       },
-                      "id": 32,
+                      "id": 42,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -481,42 +639,42 @@
                       "lValueRequested": false,
                       "names": [],
                       "nodeType": "FunctionCall",
-                      "src": "365:34:0",
+                      "src": "515:34:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Rater_$11_memory",
                         "typeString": "struct BookRater.Rater memory"
                       }
                     },
-                    "src": "341:58:0",
+                    "src": "491:58:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_Rater_$11_storage",
                       "typeString": "struct BookRater.Rater storage ref"
                     }
                   },
-                  "id": 34,
+                  "id": 44,
                   "nodeType": "ExpressionStatement",
-                  "src": "341:58:0"
+                  "src": "491:58:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 36,
+            "id": 46,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "createTask",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 20,
+              "id": 30,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 17,
+                  "id": 27,
                   "name": "_content",
                   "nodeType": "VariableDeclaration",
-                  "scope": 36,
-                  "src": "264:22:0",
+                  "scope": 46,
+                  "src": "411:22:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -524,10 +682,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 16,
+                    "id": 26,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "264:6:0",
+                    "src": "411:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -538,11 +696,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 19,
+                  "id": 29,
                   "name": "rating",
                   "nodeType": "VariableDeclaration",
-                  "scope": 36,
-                  "src": "288:11:0",
+                  "scope": 46,
+                  "src": "435:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -550,10 +708,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 18,
-                    "name": "uint",
+                    "id": 28,
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "288:4:0",
+                    "src": "435:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -563,25 +721,25 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "263:37:0"
+              "src": "410:40:0"
             },
             "returnParameters": {
-              "id": 21,
+              "id": 31,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "308:0:0"
+              "src": "458:0:0"
             },
-            "scope": 71,
-            "src": "244:163:0",
+            "scope": 124,
+            "src": "391:166:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 49,
+              "id": 59,
               "nodeType": "Block",
-              "src": "435:115:0",
+              "src": "586:115:0",
               "statements": [
                 {
                   "expression": {
@@ -590,14 +748,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "54686520536576656e2048757362616e6473206f66204576656c796e204875676f",
-                        "id": 40,
+                        "id": 50,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "457:35:0",
+                        "src": "608:35:0",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_a8d70be257aef506ba2099a57e0a6fde34051e86304f72286613fafe9e721291",
@@ -608,14 +766,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "38",
-                        "id": 41,
+                        "id": 51,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "493:1:0",
+                        "src": "645:1:0",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_8_by_1",
@@ -635,18 +793,18 @@
                           "typeString": "int_const 8"
                         }
                       ],
-                      "id": 39,
+                      "id": 49,
                       "name": "createTask",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 36,
-                      "src": "446:10:0",
+                      "referencedDeclaration": 46,
+                      "src": "597:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
                         "typeString": "function (string memory,uint256)"
                       }
                     },
-                    "id": 42,
+                    "id": 52,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -654,15 +812,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "446:49:0",
+                    "src": "597:50:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 43,
+                  "id": 53,
                   "nodeType": "ExpressionStatement",
-                  "src": "446:49:0"
+                  "src": "597:50:0"
                 },
                 {
                   "expression": {
@@ -671,14 +829,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "5468652056616e697368696e672048616c66",
-                        "id": 45,
+                        "id": 55,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "string",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "517:20:0",
+                        "src": "669:20:0",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_stringliteral_862656dccc682fa1e475e699e4169334ae481e9cd6bbf1685fec431a0cb0368c",
@@ -689,14 +847,14 @@
                       {
                         "argumentTypes": null,
                         "hexValue": "39",
-                        "id": 46,
+                        "id": 56,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "538:1:0",
+                        "src": "691:1:0",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_9_by_1",
@@ -716,18 +874,18 @@
                           "typeString": "int_const 9"
                         }
                       ],
-                      "id": 44,
+                      "id": 54,
                       "name": "createTask",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 36,
-                      "src": "506:10:0",
+                      "referencedDeclaration": 46,
+                      "src": "658:10:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
                         "typeString": "function (string memory,uint256)"
                       }
                     },
-                    "id": 47,
+                    "id": 57,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -735,209 +893,455 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "506:34:0",
+                    "src": "658:35:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 48,
+                  "id": 58,
                   "nodeType": "ExpressionStatement",
-                  "src": "506:34:0"
+                  "src": "658:35:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 50,
+            "id": 60,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 37,
+              "id": 47,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "426:2:0"
+              "src": "576:2:0"
             },
             "returnParameters": {
-              "id": 38,
+              "id": 48,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "435:0:0"
+              "src": "586:0:0"
             },
-            "scope": 71,
-            "src": "415:135:0",
+            "scope": 124,
+            "src": "565:136:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 69,
+              "id": 97,
               "nodeType": "Block",
-              "src": "616:85:0",
+              "src": "787:257:0",
               "statements": [
                 {
-                  "assignments": [
-                    58
-                  ],
-                  "declarations": [
-                    {
-                      "constant": false,
-                      "id": 58,
-                      "name": "b1",
-                      "nodeType": "VariableDeclaration",
-                      "scope": 69,
-                      "src": "627:16:0",
-                      "stateVariable": false,
-                      "storageLocation": "storage",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
-                        "typeString": "struct BookRater.Rater"
-                      },
-                      "typeName": {
-                        "contractScope": null,
-                        "id": 57,
-                        "name": "Rater",
-                        "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 11,
-                        "src": "627:5:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
-                          "typeString": "struct BookRater.Rater"
-                        }
-                      },
-                      "value": null,
-                      "visibility": "internal"
-                    }
-                  ],
-                  "id": 62,
-                  "initialValue": {
+                  "condition": {
                     "argumentTypes": null,
-                    "baseExpression": {
-                      "argumentTypes": null,
-                      "id": 59,
-                      "name": "ratedBooks",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 15,
-                      "src": "646:10:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Rater_$11_storage_$",
-                        "typeString": "mapping(uint256 => struct BookRater.Rater storage ref)"
-                      }
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
                     },
-                    "id": 61,
-                    "indexExpression": {
-                      "argumentTypes": null,
-                      "id": 60,
-                      "name": "taskno",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 52,
-                      "src": "657:6:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "isConstant": false,
-                    "isLValue": true,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "nodeType": "IndexAccess",
-                    "src": "646:18:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Rater_$11_storage",
-                      "typeString": "struct BookRater.Rater storage ref"
-                    }
-                  },
-                  "nodeType": "VariableDeclarationStatement",
-                  "src": "627:37:0"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 67,
+                    "id": 69,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
-                    "leftHandSide": {
+                    "leftExpression": {
                       "argumentTypes": null,
-                      "expression": {
-                        "argumentTypes": null,
-                        "id": 63,
-                        "name": "b1",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 58,
-                        "src": "675:2:0",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
-                          "typeString": "struct BookRater.Rater storage pointer"
-                        }
-                      },
-                      "id": 65,
-                      "isConstant": false,
-                      "isLValue": true,
-                      "isPure": false,
-                      "lValueRequested": true,
-                      "memberName": "rating",
-                      "nodeType": "MemberAccess",
-                      "referencedDeclaration": 10,
-                      "src": "675:9:0",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 66,
-                      "name": "rating",
+                      "id": 67,
+                      "name": "taskno",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 54,
-                      "src": "687:6:0",
+                      "referencedDeclaration": 62,
+                      "src": "802:6:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "675:18:0",
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "id": 68,
+                      "name": "taskCount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4,
+                      "src": "811:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "802:18:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
                     }
                   },
-                  "id": 68,
-                  "nodeType": "ExpressionStatement",
-                  "src": "675:18:0"
+                  "falseBody": {
+                    "id": 95,
+                    "nodeType": "Block",
+                    "src": "885:152:0",
+                    "statements": [
+                      {
+                        "assignments": [
+                          77
+                        ],
+                        "declarations": [
+                          {
+                            "constant": false,
+                            "id": 77,
+                            "name": "b1",
+                            "nodeType": "VariableDeclaration",
+                            "scope": 95,
+                            "src": "900:16:0",
+                            "stateVariable": false,
+                            "storageLocation": "storage",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
+                              "typeString": "struct BookRater.Rater"
+                            },
+                            "typeName": {
+                              "contractScope": null,
+                              "id": 76,
+                              "name": "Rater",
+                              "nodeType": "UserDefinedTypeName",
+                              "referencedDeclaration": 11,
+                              "src": "900:5:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
+                                "typeString": "struct BookRater.Rater"
+                              }
+                            },
+                            "value": null,
+                            "visibility": "internal"
+                          }
+                        ],
+                        "id": 81,
+                        "initialValue": {
+                          "argumentTypes": null,
+                          "baseExpression": {
+                            "argumentTypes": null,
+                            "id": 78,
+                            "name": "ratedBooks",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 15,
+                            "src": "919:10:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Rater_$11_storage_$",
+                              "typeString": "mapping(uint256 => struct BookRater.Rater storage ref)"
+                            }
+                          },
+                          "id": 80,
+                          "indexExpression": {
+                            "argumentTypes": null,
+                            "id": 79,
+                            "name": "taskno",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 62,
+                            "src": "930:6:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "IndexAccess",
+                          "src": "919:18:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Rater_$11_storage",
+                            "typeString": "struct BookRater.Rater storage ref"
+                          }
+                        },
+                        "nodeType": "VariableDeclarationStatement",
+                        "src": "900:37:0"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 86,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 82,
+                              "name": "b1",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 77,
+                              "src": "952:2:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
+                                "typeString": "struct BookRater.Rater storage pointer"
+                              }
+                            },
+                            "id": 84,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "rating",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 10,
+                            "src": "952:9:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "id": 85,
+                            "name": "rating",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 64,
+                            "src": "964:6:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          },
+                          "src": "952:18:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 87,
+                        "nodeType": "ExpressionStatement",
+                        "src": "952:18:0"
+                      },
+                      {
+                        "eventCall": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 89,
+                                "name": "b1",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 77,
+                                "src": "1003:2:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
+                                  "typeString": "struct BookRater.Rater storage pointer"
+                                }
+                              },
+                              "id": 90,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "content",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 8,
+                              "src": "1003:10:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_string_storage",
+                                "typeString": "string storage ref"
+                              }
+                            },
+                            {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 91,
+                                "name": "b1",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 77,
+                                "src": "1015:2:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Rater_$11_storage_ptr",
+                                  "typeString": "struct BookRater.Rater storage pointer"
+                                }
+                              },
+                              "id": 92,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "rating",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 10,
+                              "src": "1015:9:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_string_storage",
+                                "typeString": "string storage ref"
+                              },
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "id": 88,
+                            "name": "BooksUpdated",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 21,
+                            "src": "990:12:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_uint256_$returns$__$",
+                              "typeString": "function (string memory,uint256)"
+                            }
+                          },
+                          "id": 93,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "990:35:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 94,
+                        "nodeType": "EmitStatement",
+                        "src": "985:40:0"
+                      }
+                    ]
+                  },
+                  "id": 96,
+                  "nodeType": "IfStatement",
+                  "src": "798:239:0",
+                  "trueBody": {
+                    "id": 75,
+                    "nodeType": "Block",
+                    "src": "822:57:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "components": [
+                                {
+                                  "argumentTypes": null,
+                                  "hexValue": "496e76616c696420426f6f6b204944206e6f",
+                                  "id": 71,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "string",
+                                  "lValueRequested": false,
+                                  "nodeType": "Literal",
+                                  "src": "845:20:0",
+                                  "subdenomination": null,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_stringliteral_0551cdea69623587e752b0a68ff3b3453393ce3124c2835cfc52c1351853e62b",
+                                    "typeString": "literal_string \"Invalid Book ID no\""
+                                  },
+                                  "value": "Invalid Book ID no"
+                                }
+                              ],
+                              "id": 72,
+                              "isConstant": false,
+                              "isInlineArray": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "TupleExpression",
+                              "src": "844:22:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_0551cdea69623587e752b0a68ff3b3453393ce3124c2835cfc52c1351853e62b",
+                                "typeString": "literal_string \"Invalid Book ID no\""
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_stringliteral_0551cdea69623587e752b0a68ff3b3453393ce3124c2835cfc52c1351853e62b",
+                                "typeString": "literal_string \"Invalid Book ID no\""
+                              }
+                            ],
+                            "id": 70,
+                            "name": "revert",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              177,
+                              178
+                            ],
+                            "referencedDeclaration": 178,
+                            "src": "837:6:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
+                              "typeString": "function (string memory) pure"
+                            }
+                          },
+                          "id": 73,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "837:30:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 74,
+                        "nodeType": "ExpressionStatement",
+                        "src": "837:30:0"
+                      }
+                    ]
+                  }
                 }
               ]
             },
             "documentation": null,
-            "id": 70,
+            "id": 98,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "changeRating",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 55,
+              "id": 65,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 52,
+                  "id": 62,
                   "name": "taskno",
                   "nodeType": "VariableDeclaration",
-                  "scope": 70,
-                  "src": "584:11:0",
+                  "scope": 98,
+                  "src": "748:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -945,10 +1349,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 51,
-                    "name": "uint",
+                    "id": 61,
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "584:4:0",
+                    "src": "748:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -959,11 +1363,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 54,
+                  "id": 64,
                   "name": "rating",
                   "nodeType": "VariableDeclaration",
-                  "scope": 70,
-                  "src": "596:11:0",
+                  "scope": 98,
+                  "src": "764:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -971,10 +1375,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 53,
-                    "name": "uint",
+                    "id": 63,
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "596:4:0",
+                    "src": "764:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -984,33 +1388,334 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "583:25:0"
+              "src": "747:32:0"
             },
             "returnParameters": {
-              "id": 56,
+              "id": 66,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "616:0:0"
+              "src": "787:0:0"
             },
-            "scope": 71,
-            "src": "562:139:0",
+            "scope": 124,
+            "src": "726:318:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 122,
+              "nodeType": "Block",
+              "src": "1114:192:0",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    },
+                    "id": 105,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "id": 103,
+                      "name": "taskno",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 100,
+                      "src": "1129:6:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": ">",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "id": 104,
+                      "name": "taskCount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4,
+                      "src": "1138:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1129:18:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 120,
+                    "nodeType": "Block",
+                    "src": "1208:91:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 114,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "nodeType": "UnaryOperation",
+                          "operator": "delete",
+                          "prefix": true,
+                          "src": "1223:25:0",
+                          "subExpression": {
+                            "argumentTypes": null,
+                            "baseExpression": {
+                              "argumentTypes": null,
+                              "id": 111,
+                              "name": "ratedBooks",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 15,
+                              "src": "1230:10:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Rater_$11_storage_$",
+                                "typeString": "mapping(uint256 => struct BookRater.Rater storage ref)"
+                              }
+                            },
+                            "id": 113,
+                            "indexExpression": {
+                              "argumentTypes": null,
+                              "id": 112,
+                              "name": "taskno",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 100,
+                              "src": "1241:6:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "nodeType": "IndexAccess",
+                            "src": "1230:18:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Rater_$11_storage",
+                              "typeString": "struct BookRater.Rater storage ref"
+                            }
+                          },
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 115,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1223:25:0"
+                      },
+                      {
+                        "eventCall": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 117,
+                              "name": "taskno",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 100,
+                              "src": "1280:6:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "id": 116,
+                            "name": "BookDeleted",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 25,
+                            "src": "1268:11:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256)"
+                            }
+                          },
+                          "id": 118,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1268:19:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 119,
+                        "nodeType": "EmitStatement",
+                        "src": "1263:24:0"
+                      }
+                    ]
+                  },
+                  "id": 121,
+                  "nodeType": "IfStatement",
+                  "src": "1125:174:0",
+                  "trueBody": {
+                    "id": 110,
+                    "nodeType": "Block",
+                    "src": "1148:56:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "496e76616c696420426f6f6b204944206e6f2e",
+                              "id": 107,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1170:21:0",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_2851d1932cc746dc08418c5170eb34d391abf9cf0e04f07db4d28f6c97da8f72",
+                                "typeString": "literal_string \"Invalid Book ID no.\""
+                              },
+                              "value": "Invalid Book ID no."
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_stringliteral_2851d1932cc746dc08418c5170eb34d391abf9cf0e04f07db4d28f6c97da8f72",
+                                "typeString": "literal_string \"Invalid Book ID no.\""
+                              }
+                            ],
+                            "id": 106,
+                            "name": "revert",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [
+                              177,
+                              178
+                            ],
+                            "referencedDeclaration": 178,
+                            "src": "1163:6:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_revert_pure$_t_string_memory_ptr_$returns$__$",
+                              "typeString": "function (string memory) pure"
+                            }
+                          },
+                          "id": 108,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1163:29:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 109,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1163:29:0"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 123,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deleteRating",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 101,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 100,
+                  "name": "taskno",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 123,
+                  "src": "1091:14:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 99,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1091:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1090:16:0"
+            },
+            "returnParameters": {
+              "id": 102,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1114:0:0"
+            },
+            "scope": 124,
+            "src": "1069:237:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 72,
-        "src": "29:675:0"
+        "scope": 125,
+        "src": "59:1250:0"
       }
     ],
-    "src": "0:706:0"
+    "src": "0:1311:0"
   },
   "legacyAST": {
     "attributes": {
       "absolutePath": "project:/contracts/BookRater.sol",
       "exportedSymbols": {
         "BookRater": [
-          71
+          124
         ]
       }
     },
@@ -1040,17 +1745,17 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            71
+            124
           ],
           "name": "BookRater",
-          "scope": 72
+          "scope": 125
         },
         "children": [
           {
             "attributes": {
               "constant": false,
               "name": "taskCount",
-              "scope": 71,
+              "scope": 124,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -1064,7 +1769,7 @@
                 },
                 "id": 2,
                 "name": "ElementaryTypeName",
-                "src": "55:7:0"
+                "src": "85:7:0"
               },
               {
                 "attributes": {
@@ -1081,18 +1786,18 @@
                 },
                 "id": 3,
                 "name": "Literal",
-                "src": "82:1:0"
+                "src": "112:1:0"
               }
             ],
             "id": 4,
             "name": "VariableDeclaration",
-            "src": "55:28:0"
+            "src": "85:28:0"
           },
           {
             "attributes": {
               "canonicalName": "BookRater.Rater",
               "name": "Rater",
-              "scope": 71,
+              "scope": 124,
               "visibility": "public"
             },
             "children": [
@@ -1115,12 +1820,12 @@
                     },
                     "id": 5,
                     "name": "ElementaryTypeName",
-                    "src": "116:7:0"
+                    "src": "146:7:0"
                   }
                 ],
                 "id": 6,
                 "name": "VariableDeclaration",
-                "src": "116:10:0"
+                "src": "146:10:0"
               },
               {
                 "attributes": {
@@ -1141,12 +1846,12 @@
                     },
                     "id": 7,
                     "name": "ElementaryTypeName",
-                    "src": "137:6:0"
+                    "src": "167:6:0"
                   }
                 ],
                 "id": 8,
                 "name": "VariableDeclaration",
-                "src": "137:14:0"
+                "src": "167:14:0"
               },
               {
                 "attributes": {
@@ -1167,23 +1872,23 @@
                     },
                     "id": 9,
                     "name": "ElementaryTypeName",
-                    "src": "162:7:0"
+                    "src": "192:7:0"
                   }
                 ],
                 "id": 10,
                 "name": "VariableDeclaration",
-                "src": "162:14:0"
+                "src": "192:14:0"
               }
             ],
             "id": 11,
             "name": "StructDefinition",
-            "src": "92:92:0"
+            "src": "122:92:0"
           },
           {
             "attributes": {
               "constant": false,
               "name": "ratedBooks",
-              "scope": 71,
+              "scope": 124,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "mapping(uint256 => struct BookRater.Rater)",
@@ -1203,7 +1908,7 @@
                     },
                     "id": 12,
                     "name": "ElementaryTypeName",
-                    "src": "200:7:0"
+                    "src": "230:7:0"
                   },
                   {
                     "attributes": {
@@ -1214,32 +1919,23 @@
                     },
                     "id": 13,
                     "name": "UserDefinedTypeName",
-                    "src": "211:5:0"
+                    "src": "241:5:0"
                   }
                 ],
                 "id": 14,
                 "name": "Mapping",
-                "src": "192:25:0"
+                "src": "222:25:0"
               }
             ],
             "id": 15,
             "name": "VariableDeclaration",
-            "src": "192:43:0"
+            "src": "222:43:0"
           },
           {
             "attributes": {
+              "anonymous": false,
               "documentation": null,
-              "implemented": true,
-              "isConstructor": false,
-              "kind": "function",
-              "modifiers": [
-                null
-              ],
-              "name": "createTask",
-              "scope": 71,
-              "stateMutability": "nonpayable",
-              "superFunction": null,
-              "visibility": "public"
+              "name": "BooksUpdated"
             },
             "children": [
               {
@@ -1247,10 +1943,11 @@
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "_content",
-                      "scope": 36,
+                      "indexed": false,
+                      "name": "bookName",
+                      "scope": 21,
                       "stateVariable": false,
-                      "storageLocation": "memory",
+                      "storageLocation": "default",
                       "type": "string",
                       "value": null,
                       "visibility": "internal"
@@ -1263,18 +1960,19 @@
                         },
                         "id": 16,
                         "name": "ElementaryTypeName",
-                        "src": "264:6:0"
+                        "src": "293:6:0"
                       }
                     ],
                     "id": 17,
                     "name": "VariableDeclaration",
-                    "src": "264:22:0"
+                    "src": "293:15:0"
                   },
                   {
                     "attributes": {
                       "constant": false,
+                      "indexed": false,
                       "name": "rating",
-                      "scope": 36,
+                      "scope": 21,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1284,22 +1982,148 @@
                     "children": [
                       {
                         "attributes": {
-                          "name": "uint",
+                          "name": "uint256",
                           "type": "uint256"
                         },
                         "id": 18,
                         "name": "ElementaryTypeName",
-                        "src": "288:4:0"
+                        "src": "310:7:0"
                       }
                     ],
                     "id": 19,
                     "name": "VariableDeclaration",
-                    "src": "288:11:0"
+                    "src": "310:14:0"
                   }
                 ],
                 "id": 20,
                 "name": "ParameterList",
-                "src": "263:37:0"
+                "src": "292:33:0"
+              }
+            ],
+            "id": 21,
+            "name": "EventDefinition",
+            "src": "274:52:0"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "BookDeleted"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "task",
+                      "scope": 25,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 22,
+                        "name": "ElementaryTypeName",
+                        "src": "352:7:0"
+                      }
+                    ],
+                    "id": 23,
+                    "name": "VariableDeclaration",
+                    "src": "352:12:0"
+                  }
+                ],
+                "id": 24,
+                "name": "ParameterList",
+                "src": "351:14:0"
+              }
+            ],
+            "id": 25,
+            "name": "EventDefinition",
+            "src": "334:32:0"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "createTask",
+              "scope": 124,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_content",
+                      "scope": 46,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 26,
+                        "name": "ElementaryTypeName",
+                        "src": "411:6:0"
+                      }
+                    ],
+                    "id": 27,
+                    "name": "VariableDeclaration",
+                    "src": "411:22:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "rating",
+                      "scope": 46,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 28,
+                        "name": "ElementaryTypeName",
+                        "src": "435:7:0"
+                      }
+                    ],
+                    "id": 29,
+                    "name": "VariableDeclaration",
+                    "src": "435:14:0"
+                  }
+                ],
+                "id": 30,
+                "name": "ParameterList",
+                "src": "410:40:0"
               },
               {
                 "attributes": {
@@ -1308,9 +2132,9 @@
                   ]
                 },
                 "children": [],
-                "id": 21,
+                "id": 31,
                 "name": "ParameterList",
-                "src": "308:0:0"
+                "src": "458:0:0"
               },
               {
                 "children": [
@@ -1338,19 +2162,19 @@
                               "type": "uint256",
                               "value": "taskCount"
                             },
-                            "id": 22,
+                            "id": 32,
                             "name": "Identifier",
-                            "src": "319:9:0"
+                            "src": "469:9:0"
                           }
                         ],
-                        "id": 23,
+                        "id": 33,
                         "name": "UnaryOperation",
-                        "src": "319:11:0"
+                        "src": "469:11:0"
                       }
                     ],
-                    "id": 24,
+                    "id": 34,
                     "name": "ExpressionStatement",
-                    "src": "319:11:0"
+                    "src": "469:11:0"
                   },
                   {
                     "children": [
@@ -1385,9 +2209,9 @@
                                   "type": "mapping(uint256 => struct BookRater.Rater storage ref)",
                                   "value": "ratedBooks"
                                 },
-                                "id": 25,
+                                "id": 35,
                                 "name": "Identifier",
-                                "src": "341:10:0"
+                                "src": "491:10:0"
                               },
                               {
                                 "attributes": {
@@ -1399,14 +2223,14 @@
                                   "type": "uint256",
                                   "value": "taskCount"
                                 },
-                                "id": 26,
+                                "id": 36,
                                 "name": "Identifier",
-                                "src": "352:9:0"
+                                "src": "502:9:0"
                               }
                             ],
-                            "id": 27,
+                            "id": 37,
                             "name": "IndexAccess",
-                            "src": "341:21:0"
+                            "src": "491:21:0"
                           },
                           {
                             "attributes": {
@@ -1446,9 +2270,9 @@
                                   "type": "type(struct BookRater.Rater storage pointer)",
                                   "value": "Rater"
                                 },
-                                "id": 28,
+                                "id": 38,
                                 "name": "Identifier",
-                                "src": "365:5:0"
+                                "src": "515:5:0"
                               },
                               {
                                 "attributes": {
@@ -1460,9 +2284,9 @@
                                   "type": "uint256",
                                   "value": "taskCount"
                                 },
-                                "id": 29,
+                                "id": 39,
                                 "name": "Identifier",
-                                "src": "371:9:0"
+                                "src": "521:9:0"
                               },
                               {
                                 "attributes": {
@@ -1470,13 +2294,13 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 17,
+                                  "referencedDeclaration": 27,
                                   "type": "string memory",
                                   "value": "_content"
                                 },
-                                "id": 30,
+                                "id": 40,
                                 "name": "Identifier",
-                                "src": "382:8:0"
+                                "src": "532:8:0"
                               },
                               {
                                 "attributes": {
@@ -1484,38 +2308,38 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 19,
+                                  "referencedDeclaration": 29,
                                   "type": "uint256",
                                   "value": "rating"
                                 },
-                                "id": 31,
+                                "id": 41,
                                 "name": "Identifier",
-                                "src": "392:6:0"
+                                "src": "542:6:0"
                               }
                             ],
-                            "id": 32,
+                            "id": 42,
                             "name": "FunctionCall",
-                            "src": "365:34:0"
+                            "src": "515:34:0"
                           }
                         ],
-                        "id": 33,
+                        "id": 43,
                         "name": "Assignment",
-                        "src": "341:58:0"
+                        "src": "491:58:0"
                       }
                     ],
-                    "id": 34,
+                    "id": 44,
                     "name": "ExpressionStatement",
-                    "src": "341:58:0"
+                    "src": "491:58:0"
                   }
                 ],
-                "id": 35,
+                "id": 45,
                 "name": "Block",
-                "src": "308:99:0"
+                "src": "458:99:0"
               }
             ],
-            "id": 36,
+            "id": 46,
             "name": "FunctionDefinition",
-            "src": "244:163:0"
+            "src": "391:166:0"
           },
           {
             "attributes": {
@@ -1527,7 +2351,7 @@
                 null
               ],
               "name": "",
-              "scope": 71,
+              "scope": 124,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1540,9 +2364,9 @@
                   ]
                 },
                 "children": [],
-                "id": 37,
+                "id": 47,
                 "name": "ParameterList",
-                "src": "426:2:0"
+                "src": "576:2:0"
               },
               {
                 "attributes": {
@@ -1551,9 +2375,9 @@
                   ]
                 },
                 "children": [],
-                "id": 38,
+                "id": 48,
                 "name": "ParameterList",
-                "src": "435:0:0"
+                "src": "586:0:0"
               },
               {
                 "children": [
@@ -1589,13 +2413,13 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 36,
+                              "referencedDeclaration": 46,
                               "type": "function (string memory,uint256)",
                               "value": "createTask"
                             },
-                            "id": 39,
+                            "id": 49,
                             "name": "Identifier",
-                            "src": "446:10:0"
+                            "src": "597:10:0"
                           },
                           {
                             "attributes": {
@@ -1610,9 +2434,9 @@
                               "type": "literal_string \"The Seven Husbands of Evelyn Hugo\"",
                               "value": "The Seven Husbands of Evelyn Hugo"
                             },
-                            "id": 40,
+                            "id": 50,
                             "name": "Literal",
-                            "src": "457:35:0"
+                            "src": "608:35:0"
                           },
                           {
                             "attributes": {
@@ -1627,19 +2451,19 @@
                               "type": "int_const 8",
                               "value": "8"
                             },
-                            "id": 41,
+                            "id": 51,
                             "name": "Literal",
-                            "src": "493:1:0"
+                            "src": "645:1:0"
                           }
                         ],
-                        "id": 42,
+                        "id": 52,
                         "name": "FunctionCall",
-                        "src": "446:49:0"
+                        "src": "597:50:0"
                       }
                     ],
-                    "id": 43,
+                    "id": 53,
                     "name": "ExpressionStatement",
-                    "src": "446:49:0"
+                    "src": "597:50:0"
                   },
                   {
                     "children": [
@@ -1673,13 +2497,13 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 36,
+                              "referencedDeclaration": 46,
                               "type": "function (string memory,uint256)",
                               "value": "createTask"
                             },
-                            "id": 44,
+                            "id": 54,
                             "name": "Identifier",
-                            "src": "506:10:0"
+                            "src": "658:10:0"
                           },
                           {
                             "attributes": {
@@ -1694,9 +2518,9 @@
                               "type": "literal_string \"The Vanishing Half\"",
                               "value": "The Vanishing Half"
                             },
-                            "id": 45,
+                            "id": 55,
                             "name": "Literal",
-                            "src": "517:20:0"
+                            "src": "669:20:0"
                           },
                           {
                             "attributes": {
@@ -1711,29 +2535,29 @@
                               "type": "int_const 9",
                               "value": "9"
                             },
-                            "id": 46,
+                            "id": 56,
                             "name": "Literal",
-                            "src": "538:1:0"
+                            "src": "691:1:0"
                           }
                         ],
-                        "id": 47,
+                        "id": 57,
                         "name": "FunctionCall",
-                        "src": "506:34:0"
+                        "src": "658:35:0"
                       }
                     ],
-                    "id": 48,
+                    "id": 58,
                     "name": "ExpressionStatement",
-                    "src": "506:34:0"
+                    "src": "658:35:0"
                   }
                 ],
-                "id": 49,
+                "id": 59,
                 "name": "Block",
-                "src": "435:115:0"
+                "src": "586:115:0"
               }
             ],
-            "id": 50,
+            "id": 60,
             "name": "FunctionDefinition",
-            "src": "415:135:0"
+            "src": "565:136:0"
           },
           {
             "attributes": {
@@ -1745,7 +2569,7 @@
                 null
               ],
               "name": "changeRating",
-              "scope": 71,
+              "scope": 124,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -1757,7 +2581,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "taskno",
-                      "scope": 70,
+                      "scope": 98,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1767,23 +2591,23 @@
                     "children": [
                       {
                         "attributes": {
-                          "name": "uint",
+                          "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 51,
+                        "id": 61,
                         "name": "ElementaryTypeName",
-                        "src": "584:4:0"
+                        "src": "748:7:0"
                       }
                     ],
-                    "id": 52,
+                    "id": 62,
                     "name": "VariableDeclaration",
-                    "src": "584:11:0"
+                    "src": "748:14:0"
                   },
                   {
                     "attributes": {
                       "constant": false,
                       "name": "rating",
-                      "scope": 70,
+                      "scope": 98,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1793,22 +2617,22 @@
                     "children": [
                       {
                         "attributes": {
-                          "name": "uint",
+                          "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 53,
+                        "id": 63,
                         "name": "ElementaryTypeName",
-                        "src": "596:4:0"
+                        "src": "764:7:0"
                       }
                     ],
-                    "id": 54,
+                    "id": 64,
                     "name": "VariableDeclaration",
-                    "src": "596:11:0"
+                    "src": "764:14:0"
                   }
                 ],
-                "id": 55,
+                "id": 65,
                 "name": "ParameterList",
-                "src": "583:25:0"
+                "src": "747:32:0"
               },
               {
                 "attributes": {
@@ -1817,55 +2641,27 @@
                   ]
                 },
                 "children": [],
-                "id": 56,
+                "id": 66,
                 "name": "ParameterList",
-                "src": "616:0:0"
+                "src": "787:0:0"
               },
               {
                 "children": [
                   {
-                    "attributes": {
-                      "assignments": [
-                        58
-                      ]
-                    },
                     "children": [
                       {
                         "attributes": {
-                          "constant": false,
-                          "name": "b1",
-                          "scope": 69,
-                          "stateVariable": false,
-                          "storageLocation": "storage",
-                          "type": "struct BookRater.Rater",
-                          "value": null,
-                          "visibility": "internal"
-                        },
-                        "children": [
-                          {
-                            "attributes": {
-                              "contractScope": null,
-                              "name": "Rater",
-                              "referencedDeclaration": 11,
-                              "type": "struct BookRater.Rater"
-                            },
-                            "id": 57,
-                            "name": "UserDefinedTypeName",
-                            "src": "627:5:0"
-                          }
-                        ],
-                        "id": 58,
-                        "name": "VariableDeclaration",
-                        "src": "627:16:0"
-                      },
-                      {
-                        "attributes": {
                           "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
                           "isConstant": false,
-                          "isLValue": true,
+                          "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "type": "struct BookRater.Rater storage ref"
+                          "operator": ">",
+                          "type": "bool"
                         },
                         "children": [
                           {
@@ -1874,13 +2670,13 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 15,
-                              "type": "mapping(uint256 => struct BookRater.Rater storage ref)",
-                              "value": "ratedBooks"
+                              "referencedDeclaration": 62,
+                              "type": "uint256",
+                              "value": "taskno"
                             },
-                            "id": 59,
+                            "id": 67,
                             "name": "Identifier",
-                            "src": "646:10:0"
+                            "src": "802:6:0"
                           },
                           {
                             "attributes": {
@@ -1888,67 +2684,483 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 52,
+                              "referencedDeclaration": 4,
                               "type": "uint256",
-                              "value": "taskno"
+                              "value": "taskCount"
                             },
-                            "id": 60,
+                            "id": 68,
                             "name": "Identifier",
-                            "src": "657:6:0"
+                            "src": "811:9:0"
                           }
                         ],
-                        "id": 61,
-                        "name": "IndexAccess",
-                        "src": "646:18:0"
+                        "id": 69,
+                        "name": "BinaryOperation",
+                        "src": "802:18:0"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "tuple()",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_stringliteral_0551cdea69623587e752b0a68ff3b3453393ce3124c2835cfc52c1351853e62b",
+                                          "typeString": "literal_string \"Invalid Book ID no\""
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        177,
+                                        178
+                                      ],
+                                      "referencedDeclaration": 178,
+                                      "type": "function (string memory) pure",
+                                      "value": "revert"
+                                    },
+                                    "id": 70,
+                                    "name": "Identifier",
+                                    "src": "837:6:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isInlineArray": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "type": "literal_string \"Invalid Book ID no\""
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "hexvalue": "496e76616c696420426f6f6b204944206e6f",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "subdenomination": null,
+                                          "token": "string",
+                                          "type": "literal_string \"Invalid Book ID no\"",
+                                          "value": "Invalid Book ID no"
+                                        },
+                                        "id": 71,
+                                        "name": "Literal",
+                                        "src": "845:20:0"
+                                      }
+                                    ],
+                                    "id": 72,
+                                    "name": "TupleExpression",
+                                    "src": "844:22:0"
+                                  }
+                                ],
+                                "id": 73,
+                                "name": "FunctionCall",
+                                "src": "837:30:0"
+                              }
+                            ],
+                            "id": 74,
+                            "name": "ExpressionStatement",
+                            "src": "837:30:0"
+                          }
+                        ],
+                        "id": 75,
+                        "name": "Block",
+                        "src": "822:57:0"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "assignments": [
+                                77
+                              ]
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "constant": false,
+                                  "name": "b1",
+                                  "scope": 95,
+                                  "stateVariable": false,
+                                  "storageLocation": "storage",
+                                  "type": "struct BookRater.Rater",
+                                  "value": null,
+                                  "visibility": "internal"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "contractScope": null,
+                                      "name": "Rater",
+                                      "referencedDeclaration": 11,
+                                      "type": "struct BookRater.Rater"
+                                    },
+                                    "id": 76,
+                                    "name": "UserDefinedTypeName",
+                                    "src": "900:5:0"
+                                  }
+                                ],
+                                "id": 77,
+                                "name": "VariableDeclaration",
+                                "src": "900:16:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "type": "struct BookRater.Rater storage ref"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 15,
+                                      "type": "mapping(uint256 => struct BookRater.Rater storage ref)",
+                                      "value": "ratedBooks"
+                                    },
+                                    "id": 78,
+                                    "name": "Identifier",
+                                    "src": "919:10:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 62,
+                                      "type": "uint256",
+                                      "value": "taskno"
+                                    },
+                                    "id": 79,
+                                    "name": "Identifier",
+                                    "src": "930:6:0"
+                                  }
+                                ],
+                                "id": 80,
+                                "name": "IndexAccess",
+                                "src": "919:18:0"
+                              }
+                            ],
+                            "id": 81,
+                            "name": "VariableDeclarationStatement",
+                            "src": "900:37:0"
+                          },
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "=",
+                                  "type": "uint256"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": true,
+                                      "member_name": "rating",
+                                      "referencedDeclaration": 10,
+                                      "type": "uint256"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 77,
+                                          "type": "struct BookRater.Rater storage pointer",
+                                          "value": "b1"
+                                        },
+                                        "id": 82,
+                                        "name": "Identifier",
+                                        "src": "952:2:0"
+                                      }
+                                    ],
+                                    "id": 84,
+                                    "name": "MemberAccess",
+                                    "src": "952:9:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 64,
+                                      "type": "uint256",
+                                      "value": "rating"
+                                    },
+                                    "id": 85,
+                                    "name": "Identifier",
+                                    "src": "964:6:0"
+                                  }
+                                ],
+                                "id": 86,
+                                "name": "Assignment",
+                                "src": "952:18:0"
+                              }
+                            ],
+                            "id": 87,
+                            "name": "ExpressionStatement",
+                            "src": "952:18:0"
+                          },
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "tuple()",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_string_storage",
+                                          "typeString": "string storage ref"
+                                        },
+                                        {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 21,
+                                      "type": "function (string memory,uint256)",
+                                      "value": "BooksUpdated"
+                                    },
+                                    "id": 88,
+                                    "name": "Identifier",
+                                    "src": "990:12:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "content",
+                                      "referencedDeclaration": 8,
+                                      "type": "string storage ref"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 77,
+                                          "type": "struct BookRater.Rater storage pointer",
+                                          "value": "b1"
+                                        },
+                                        "id": 89,
+                                        "name": "Identifier",
+                                        "src": "1003:2:0"
+                                      }
+                                    ],
+                                    "id": 90,
+                                    "name": "MemberAccess",
+                                    "src": "1003:10:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "rating",
+                                      "referencedDeclaration": 10,
+                                      "type": "uint256"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 77,
+                                          "type": "struct BookRater.Rater storage pointer",
+                                          "value": "b1"
+                                        },
+                                        "id": 91,
+                                        "name": "Identifier",
+                                        "src": "1015:2:0"
+                                      }
+                                    ],
+                                    "id": 92,
+                                    "name": "MemberAccess",
+                                    "src": "1015:9:0"
+                                  }
+                                ],
+                                "id": 93,
+                                "name": "FunctionCall",
+                                "src": "990:35:0"
+                              }
+                            ],
+                            "id": 94,
+                            "name": "EmitStatement",
+                            "src": "985:40:0"
+                          }
+                        ],
+                        "id": 95,
+                        "name": "Block",
+                        "src": "885:152:0"
                       }
                     ],
-                    "id": 62,
-                    "name": "VariableDeclarationStatement",
-                    "src": "627:37:0"
-                  },
+                    "id": 96,
+                    "name": "IfStatement",
+                    "src": "798:239:0"
+                  }
+                ],
+                "id": 97,
+                "name": "Block",
+                "src": "787:257:0"
+              }
+            ],
+            "id": 98,
+            "name": "FunctionDefinition",
+            "src": "726:318:0"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "deleteRating",
+              "scope": 124,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "taskno",
+                      "scope": 123,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 99,
+                        "name": "ElementaryTypeName",
+                        "src": "1091:7:0"
+                      }
+                    ],
+                    "id": 100,
+                    "name": "VariableDeclaration",
+                    "src": "1091:14:0"
+                  }
+                ],
+                "id": 101,
+                "name": "ParameterList",
+                "src": "1090:16:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 102,
+                "name": "ParameterList",
+                "src": "1114:0:0"
+              },
+              {
+                "children": [
                   {
                     "children": [
                       {
                         "attributes": {
                           "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
-                          "operator": "=",
-                          "type": "uint256"
+                          "operator": ">",
+                          "type": "bool"
                         },
                         "children": [
                           {
                             "attributes": {
                               "argumentTypes": null,
-                              "isConstant": false,
-                              "isLValue": true,
-                              "isPure": false,
-                              "lValueRequested": true,
-                              "member_name": "rating",
-                              "referencedDeclaration": 10,
-                              "type": "uint256"
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 100,
+                              "type": "uint256",
+                              "value": "taskno"
                             },
-                            "children": [
-                              {
-                                "attributes": {
-                                  "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 58,
-                                  "type": "struct BookRater.Rater storage pointer",
-                                  "value": "b1"
-                                },
-                                "id": 63,
-                                "name": "Identifier",
-                                "src": "675:2:0"
-                              }
-                            ],
-                            "id": 65,
-                            "name": "MemberAccess",
-                            "src": "675:9:0"
+                            "id": 103,
+                            "name": "Identifier",
+                            "src": "1129:6:0"
                           },
                           {
                             "attributes": {
@@ -1956,43 +3168,248 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 54,
+                              "referencedDeclaration": 4,
                               "type": "uint256",
-                              "value": "rating"
+                              "value": "taskCount"
                             },
-                            "id": 66,
+                            "id": 104,
                             "name": "Identifier",
-                            "src": "687:6:0"
+                            "src": "1138:9:0"
                           }
                         ],
-                        "id": 67,
-                        "name": "Assignment",
-                        "src": "675:18:0"
+                        "id": 105,
+                        "name": "BinaryOperation",
+                        "src": "1129:18:0"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "tuple()",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_stringliteral_2851d1932cc746dc08418c5170eb34d391abf9cf0e04f07db4d28f6c97da8f72",
+                                          "typeString": "literal_string \"Invalid Book ID no.\""
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        177,
+                                        178
+                                      ],
+                                      "referencedDeclaration": 178,
+                                      "type": "function (string memory) pure",
+                                      "value": "revert"
+                                    },
+                                    "id": 106,
+                                    "name": "Identifier",
+                                    "src": "1163:6:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "hexvalue": "496e76616c696420426f6f6b204944206e6f2e",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "subdenomination": null,
+                                      "token": "string",
+                                      "type": "literal_string \"Invalid Book ID no.\"",
+                                      "value": "Invalid Book ID no."
+                                    },
+                                    "id": 107,
+                                    "name": "Literal",
+                                    "src": "1170:21:0"
+                                  }
+                                ],
+                                "id": 108,
+                                "name": "FunctionCall",
+                                "src": "1163:29:0"
+                              }
+                            ],
+                            "id": 109,
+                            "name": "ExpressionStatement",
+                            "src": "1163:29:0"
+                          }
+                        ],
+                        "id": 110,
+                        "name": "Block",
+                        "src": "1148:56:0"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "delete",
+                                  "prefix": true,
+                                  "type": "tuple()"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": true,
+                                      "type": "struct BookRater.Rater storage ref"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 15,
+                                          "type": "mapping(uint256 => struct BookRater.Rater storage ref)",
+                                          "value": "ratedBooks"
+                                        },
+                                        "id": 111,
+                                        "name": "Identifier",
+                                        "src": "1230:10:0"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 100,
+                                          "type": "uint256",
+                                          "value": "taskno"
+                                        },
+                                        "id": 112,
+                                        "name": "Identifier",
+                                        "src": "1241:6:0"
+                                      }
+                                    ],
+                                    "id": 113,
+                                    "name": "IndexAccess",
+                                    "src": "1230:18:0"
+                                  }
+                                ],
+                                "id": 114,
+                                "name": "UnaryOperation",
+                                "src": "1223:25:0"
+                              }
+                            ],
+                            "id": 115,
+                            "name": "ExpressionStatement",
+                            "src": "1223:25:0"
+                          },
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "tuple()",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 25,
+                                      "type": "function (uint256)",
+                                      "value": "BookDeleted"
+                                    },
+                                    "id": 116,
+                                    "name": "Identifier",
+                                    "src": "1268:11:0"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 100,
+                                      "type": "uint256",
+                                      "value": "taskno"
+                                    },
+                                    "id": 117,
+                                    "name": "Identifier",
+                                    "src": "1280:6:0"
+                                  }
+                                ],
+                                "id": 118,
+                                "name": "FunctionCall",
+                                "src": "1268:19:0"
+                              }
+                            ],
+                            "id": 119,
+                            "name": "EmitStatement",
+                            "src": "1263:24:0"
+                          }
+                        ],
+                        "id": 120,
+                        "name": "Block",
+                        "src": "1208:91:0"
                       }
                     ],
-                    "id": 68,
-                    "name": "ExpressionStatement",
-                    "src": "675:18:0"
+                    "id": 121,
+                    "name": "IfStatement",
+                    "src": "1125:174:0"
                   }
                 ],
-                "id": 69,
+                "id": 122,
                 "name": "Block",
-                "src": "616:85:0"
+                "src": "1114:192:0"
               }
             ],
-            "id": 70,
+            "id": 123,
             "name": "FunctionDefinition",
-            "src": "562:139:0"
+            "src": "1069:237:0"
           }
         ],
-        "id": 71,
+        "id": 124,
         "name": "ContractDefinition",
-        "src": "29:675:0"
+        "src": "59:1250:0"
       }
     ],
-    "id": 72,
+    "id": 125,
     "name": "SourceUnit",
-    "src": "0:706:0"
+    "src": "0:1311:0"
   },
   "compiler": {
     "name": "solc",
@@ -2002,12 +3419,13 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x993b66F38bF35c220608Ba8aa99888f9B67556b8",
-      "transactionHash": "0x318016a0f2b0a84a5bee035d16fcb6df27b1438266d8101efaee3bf029c39a50"
+      "address": "0x82092CE6ad2464788c4413F9C6B46e2CF39F33eD",
+      "transactionHash": "0xe9c99866e4dc35d241b540afc2660bb16e9f8f0279c9d9a7e3ee03e39e410247"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-01-25T15:26:10.023Z",
+  "updatedAt": "2022-01-28T15:33:24.111Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },

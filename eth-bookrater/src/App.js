@@ -52,16 +52,17 @@ class App extends Component {
     this.loadBlockchainData();
   }
 
+  async deleteBook(tid,e){
+    console.log(this.state.bkRater)
+    const del = await this.state.bkRater.methods.deleteRating(tid).send({from:this.state.account});
+    this.loadBlockchainData();
+  }
+
   render() {
     return (
       <div>
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-          <a className="navbar-brand col-sm-3 col-md-2 mr-0" target="_blank">Book Rater Application</a>
-          <ul className="navbar-nav px-3">
-            <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-              <small><a className="nav-link" href="#"><span id="account"></span></a></small>
-            </li>
-          </ul>
+          <h2 className="navbar-brand col-sm-3 col-md-2 mr-0" >Book Rater Application</h2>
         </nav>
         <div className="jumbotron">
           <div>
@@ -76,7 +77,7 @@ class App extends Component {
                       {this.state.ratedBooks.map((task, key) => {
                         return (
                           <div className="taskTemplate" className="checkbox" key={key}>
-                            <button className="content btn btn-secondary">{task.content}</button>
+                            <button className="content btn btn-secondary" onClick={this.deleteBook.bind(this,task.id)}>{task.content}</button>
                           </div>
                         )
                       })}

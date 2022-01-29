@@ -1,10 +1,42 @@
-export const TODO_LIST_ADDRESS = '0x484fde9270865EDb60C799D1E2F3ea886c06014f'
+export const TODO_LIST_ADDRESS = '0x1cb6416b0F6931cb4b2043fa5583Aa3109A4E512'
 
 export const TODO_LIST_ABI = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "task",
+				"type": "uint256"
+			}
+		],
+		"name": "BookDeleted",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "bookName",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "rating",
+				"type": "uint256"
+			}
+		],
+		"name": "BooksUpdated",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -38,6 +70,19 @@ export const TODO_LIST_ABI = [
 			}
 		],
 		"name": "createTask",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "taskno",
+				"type": "uint256"
+			}
+		],
+		"name": "deleteRating",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

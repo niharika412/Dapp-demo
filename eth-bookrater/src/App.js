@@ -7,7 +7,7 @@ class App extends Component {
   componentDidMount() {
     this.loadBlockchainData()
   }
-  
+
   async loadBlockchainData() {
     this.setState({
       account: '',
@@ -43,18 +43,18 @@ class App extends Component {
 
   handleAddBook(e) {
     //e.preventDefault();
-    this.setState({new: e.target.value });
+    this.setState({ new: e.target.value });
   }
 
-  async addNew(e){
+  async addNew(e) {
     e.preventDefault();
-    const task = await this.state.bkRater.methods.createTask(this.state.new,0).send({ from: this.state.account });
+    const task = await this.state.bkRater.methods.createTask(this.state.new, 0).send({ from: this.state.account });
     this.loadBlockchainData();
   }
 
-  async deleteBook(tid,e){
+  async deleteBook(tid, e) {
     console.log(this.state.bkRater)
-    const del = await this.state.bkRater.methods.deleteRating(tid).send({from:this.state.account});
+    const del = await this.state.bkRater.methods.deleteRating(tid).send({ from: this.state.account });
     this.loadBlockchainData();
   }
 
@@ -75,11 +75,12 @@ class App extends Component {
                   <div id="content">
                     <ul>
                       {this.state.ratedBooks.map((task, key) => {
-                        return (
-                          <div className="taskTemplate" className="checkbox" key={key}>
-                            <button className="content btn btn-secondary" onClick={this.deleteBook.bind(this,task.id)}>{task.content}</button>
-                          </div>
-                        )
+                        if(task.content){
+                          return  <div className="taskTemplate" className="checkbox" key={key}>
+                          <button className="content btn btn-secondary" onClick={this.deleteBook.bind(this, task.id)}>{task.content}</button>
+                        </div>;
+                        }
+                        return
                       })}
                     </ul>
                     <ul id="completedTaskList" className="list-unstyled">

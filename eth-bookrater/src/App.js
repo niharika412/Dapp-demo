@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import Web3 from 'web3'
 import './App.css'
 import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from './config'
-
+import Change from './Change'
 class App extends Component {
   componentDidMount() {
-    this.loadBlockchainData()
+    this.loadBlockchainData();
   }
 
   async loadBlockchainData() {
@@ -36,7 +36,8 @@ class App extends Component {
       account: '',
       taskCount: 0,
       ratedBooks: [],
-      new: ''
+      new: '',
+      rate: 0
     }
   }
 
@@ -46,9 +47,14 @@ class App extends Component {
     this.setState({ new: e.target.value });
   }
 
+  handleRateBook(e) {
+    //e.preventDefault();
+    this.setState({ rate: e.target.value });
+  }
+
   async addNew(e) {
     e.preventDefault();
-    const task = await this.state.bkRater.methods.createTask(this.state.new, 0).send({ from: this.state.account });
+    const task = await this.state.bkRater.methods.createTask(this.state.new, this.state.rate).send({ from: this.state.account });
     this.loadBlockchainData();
   }
 
@@ -58,7 +64,15 @@ class App extends Component {
     this.loadBlockchainData();
   }
 
+  async ChangeRate(id,rate,e){
+    console.log("Changing rating for book no:" + id.toString());
+    const chg = await this.state.bkRater.methods.changeRating(id,rate).send({ from : this.state.account});
+    this.loadBlockchainData();
+
+  }
+
   render() {
+    const rate = "⭐";
     return (
       <div>
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -75,10 +89,11 @@ class App extends Component {
                   <div id="content">
                     <ul>
                       {this.state.ratedBooks.map((task, key) => {
-                        if(task.content){
-                          return  <div className="taskTemplate" className="checkbox" key={key}>
-                          <button className="content btn btn-secondary" onClick={this.deleteBook.bind(this, task.id)}>{task.content}</button>
-                        </div>;
+                        if (task.content) {
+                          let rating = rate.repeat(task.rating);
+                          return <div className="taskTemplate" className="checkbox" key={key}>
+                            <button className="content btn btn-secondary" onClick={this.deleteBook.bind(this, task.id)}>{task.content} = {rating}</button>
+                          </div>;
                         }
                         return
                       })}
@@ -87,17 +102,29 @@ class App extends Component {
                     </ul>
                   </div>
                 </div>
-                <div className='col-9'>
-                  <div className='card'>
-                    <form>
-                      <div className="form-group">
-                        <label htmlFor="exampleInputEmail1" >Add new Book</label>
-                        <input type="text" className="form-control" id="addBook" placeholder="Enter a book to be added" value={this.state.new} onChange={this.handleAddBook.bind(this)}></input>
-                        <small id="addBook" className="form-text text-muted">We'll never share your info with anyone else</small>
-                      </div>
-                      <button className="btn btn-primary" onClick={this.addNew.bind(this)}>Submit</button>
-                    </form>
+                <div className='col-5'>
+                  <div className="card">
+                    <div className="card-header">
+                      Featured
+                    </div>
+                    <div className="card-body">
+                      <h5 className="card-title">Add a New Book</h5>
+                      <form>
+                        <div className="form-group">
+                          <input type="text" className="form-control" id="addBook" placeholder="Enter a book to be added" value={this.state.new} onChange={this.handleAddBook.bind(this)}></input>
+                        </div>
+                        <br></br>
+                        <div className='form-group'>
+                          <label htmlFor='rating'>Add a rating for the book</label>
+                          <input type="number" className="form-control" id="rating" value={this.state.rate} onChange={this.handleRateBook.bind(this)}></input>
+                        </div>
+                        <button className="btn btn-primary " onClick={this.addNew.bind(this)}>Submit</button>
+                      </form>
+                    </div>
                   </div>
+                  </div>
+                  <div className='col-4'>
+                  <Change objs={this.state.ratedBooks} fn={this.ChangeRate}></Change>
                 </div>
               </div>
             </main>

@@ -23,8 +23,8 @@ contract BookRater {
     }
 
     constructor() public {
-        createTask("The Seven Husbands of Evelyn Hugo", 8);
-        createTask("The Vanishing Half", 9);
+        createTask("The Seven Husbands of Evelyn Hugo", 4);
+        createTask("The Vanishing Half", 3);
     }
 
     //update fn

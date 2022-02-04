@@ -3419,12 +3419,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x5ffF4Ae997A33A28faDC511e9AFd7b23122E38DC",
-      "transactionHash": "0x6faf41fe7e45025116fb76ee0b993574bb9aa5c8d0b253efeac2a9e3a8f0bcc5"
+      "address": "0x516cD5aA5068011faB9940B8C3115589954F0C7C",
+      "transactionHash": "0x9a21ebdcf039eea151ab8ff88d5148f963003fe6cc619117903315d5e95d9d44"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2022-02-02T14:44:51.098Z",
+  "updatedAt": "2022-02-04T14:42:18.670Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

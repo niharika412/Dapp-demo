@@ -64,12 +64,6 @@ class App extends Component {
     this.loadBlockchainData();
   }
 
-  async ChangeRate(id,rate,e){
-    console.log("Changing rating for book no:" + id.toString());
-    const chg = await this.state.bkRater.methods.changeRating(id,rate).send({ from : this.state.account});
-    this.loadBlockchainData();
-
-  }
 
   render() {
     const rate = "⭐";
@@ -124,7 +118,7 @@ class App extends Component {
                   </div>
                   </div>
                   <div className='col-4'>
-                  <Change objs={this.state.ratedBooks} fn={this.ChangeRate}></Change>
+                  <Change ratedBooks={this.state.ratedBooks} reload={this.loadBlockchainData}></Change>
                 </div>
               </div>
             </main>

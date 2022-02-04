@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
 import './App.css'
+import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from './config'
 
 class Change extends Component {
 
@@ -14,6 +15,7 @@ class Change extends Component {
             no: '',
             rate: ''
         }
+        const {ratedBooks,reload}=props
     }
     handleBook(e) {
         //e.preventDefault();
@@ -25,11 +27,24 @@ class Change extends Component {
         this.setState({ rate: e.target.value });
     }
 
-    changeRating(e){
+    changeRating(e) {
         e.preventDefault()
-        this.props.ChangeRate(this.state.no, this.state.rate);
+        console.log(this.props);
+        this.ChangeRate(this.state.no, this.state.rate, e);
     }
 
+    async ChangeRate(id, rate, e) {
+        const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
+        const accounts = await web3.eth.getAccounts()
+        this.setState({ account: accounts[0] })
+        const bkRater = new web3.eth.Contract(TODO_LIST_ABI, TODO_LIST_ADDRESS)
+        this.setState({ bkRater })
+        console.log("Changing rating for book no:" + id.toString());
+        const chg = await this.state.bkRater.methods.changeRating(id, rate).send({ from: this.state.account });
+        
+        this.props.reload()
+
+    }
 
     render() {
         return (

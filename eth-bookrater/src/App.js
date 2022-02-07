@@ -92,8 +92,8 @@ class App extends Component {
                         return
                       })}
                     </ul>
-                    <ul id="completedTaskList" className="list-unstyled">
-                    </ul>
+                    <button className='btn btn-success btn-block' onClick={this.loadBlockchainData.bind(this)}>Refresh List</button>
+
                   </div>
                 </div>
                 <div className='col-5'>

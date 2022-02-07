@@ -33,6 +33,7 @@ class Change extends Component {
         this.ChangeRate(this.state.no, this.state.rate, e);
     }
 
+    //update the rating
     async ChangeRate(id, rate, e) {
         const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
         const accounts = await web3.eth.getAccounts()
@@ -42,8 +43,6 @@ class Change extends Component {
         console.log("Changing rating for book no:" + id.toString());
         const chg = await this.state.bkRater.methods.changeRating(id, rate).send({ from: this.state.account });
         
-        this.props.reload()
-
     }
 
     render() {
